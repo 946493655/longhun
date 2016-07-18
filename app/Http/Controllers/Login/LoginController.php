@@ -23,7 +23,7 @@ class LoginController extends BaseController
             echo "<script>alert('昵称或密码必填！');history.go(-1);</script>";exit;
         }
         if (mb_strlen($request->name)<2 || mb_strlen($request->name)>6) {
-            echo "<script>alert('6！');history.go(-1);</script>";exit;
+            echo "<script>alert('昵称在2到6位之间！');history.go(-1);</script>";exit;
         }
         if (mb_strlen($request->pwd)<6 || mb_strlen($request->pwd)>20) {
             echo "<script>alert('密码在6到20位之间！');history.go(-1);</script>";exit;
@@ -31,7 +31,11 @@ class LoginController extends BaseController
         if (!preg_match("/[A-Za-z]*/",$request->pwd)|| !preg_match("/[0-9]*/",$request->pwd)) {
             echo "<script>alert('密码必须数字、字母组合！');history.go(-1);</script>";exit;
         }
+        //验证会员、密码
         $userModel = UserModel::where('username',$request->name)->first();
+        if (!$userModel) {
+            echo "<script>alert('无此会员！！');history.go(-1);</script>";exit;
+        }
         if (!(Hash::check($request->pwd, $userModel->password))) {
             echo "<script>alert('密码不对！');history.go(-1);</script>";exit;
         }
@@ -43,5 +47,9 @@ class LoginController extends BaseController
         ];
         Session::put('user', $sessionInfo);
         echo "<script>alert('登录成功！');window.location.href='/member';";
+    }
+
+    public function logout()
+    {
     }
 }

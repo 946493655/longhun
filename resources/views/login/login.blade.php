@@ -22,7 +22,7 @@
 </head>
 <body>
 <p class="title"><b>带你挣钱带你飞！</b></p>
-<form method="POST" enctype="multipart/form-data" action="/login">
+<form method="POST" enctype="multipart/form-data" action="/dologin">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type="hidden" name="_method" value="POST">
     <table>
@@ -54,9 +54,15 @@
 <script>
     $(document).ready(function(){
         $("input[name='name']").change(function(){
-            if ($(this).val()=='') { $("#nameMsg").html('昵称不能空！'); return; }
-            else if ($(this).val().length < 2) { $("#nameMsg").html('昵称不能少于2位！'); return; }
-            else if ($(this).val().length > 6) { $("#nameMsg").html('昵称不能大于20位！'); return; }
+            if ($(this).val()=='') {
+                $("#nameMsg").html('昵称不能空！'); return;
+            } else if ($(this).val().length < 2) {
+                $("#nameMsg").html('昵称不能少于2位！'); return;
+            } else if ($(this).val().length > 6) {
+                $("#nameMsg").html('昵称不能大于6位！'); return;
+            } else {
+                $("#nameMsg").html('');
+            }
         });
         $("input[name='pwd']").change(function(){
             if ($(this).val()=='') {
@@ -65,6 +71,8 @@
                 $("#pwdMsg").html('密码不能少于6位！'); return;
             } else if ($(this).val().length > 20) {
                 $("#pwdMsg").html('密码不能多于20位！'); return;
+            } else {
+                $("#pwdMsg").html('');
             }
         });
     });
