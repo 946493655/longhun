@@ -19,3 +19,5 @@
 include("routes/login.php");
 
 include("routes/member.php");
+
+include("routes/admin.php");

@@ -5,6 +5,8 @@ use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Request as AjaxRequest;
+use Illuminate\Support\Facades\Input;
 
 class LoginController extends BaseController
 {
@@ -46,10 +48,32 @@ class LoginController extends BaseController
             'username'=> $userModel->username,
         ];
         Session::put('user', $sessionInfo);
+
+        //用户日志记录
+
         echo "<script>alert('登录成功！');window.location.href='/member';";
+    }
+
+    /**
+     * 重复会员昵称测试
+     */
+    public function hasUser()
+    {
+        if (AjaxRequest::ajax()) {
+            $data = Input::all();
+            $userModel = UserModel::where('username',$data['name'])->first();
+            if ($userModel) {
+                echo json_encode(array('code'=>'-2', 'message' =>'已有此昵称，请换个昵称！'));exit;
+            }
+            echo json_encode(array('code'=>'0', 'message' =>'没有此昵称，可以使用!'));exit;
+        }
+        echo json_encode(array('code'=>'-1', 'message' =>'非法操作!'));exit;
     }
 
     public function logout()
     {
+        //去除session
+        Session::forget('user');
+        return redirect('/');
     }
 }

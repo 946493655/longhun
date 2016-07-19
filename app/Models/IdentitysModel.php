@@ -7,7 +7,7 @@ class IdentitysModel extends BaseModel
      * 会员表
      */
 
-    protected $table = 'bs_identitys';
+    protected $table = 'identitys';
 
     protected $fillable = [
         'id','genre','qq','mobile','taobao','zfb','address','created_at','updated_at',

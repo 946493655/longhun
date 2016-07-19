@@ -7,4 +7,5 @@ Route::group(['prefix'=>'/','namespace'=>'Login'],function(){
     Route::get('/login','LoginController@index');
     Route::resource('/','LoginController');
     Route::post('/dologin','LoginController@login');
+    Route::post('/hasUser','LoginController@hasUser');
 });

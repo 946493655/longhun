@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers\Member;
 
+use App\Models\IdentitysModel;
+
 class IdentityController extends BaseController
 {
     /**
@@ -9,6 +11,16 @@ class IdentityController extends BaseController
 
     public function index()
     {
-        return view('member.identity.index');
+        return view('member.identity.index', array(
+                'data'=> $this->query(),
+            ));
+    }
+
+
+
+
+    public function query()
+    {
+        return IdentitysModel::get();
     }
 }
