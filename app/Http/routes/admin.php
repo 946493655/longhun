@@ -13,6 +13,9 @@ Route::group(['prefix'=>'lhadmin','namespace'=>'Admin'],function(){
     Route::get('{genre}/user','UserController@index');
     Route::resource('user','UserController');
     //用户身份
-    Route::get('identity','IdentityController@index');
-    Route::resource('{uname}/identity','IdentityController');
+    Route::get('{uname}/identity','IdentityController@index');
+    Route::get('{uid}/identity/create','IdentityController@create');
+    Route::get('{uid}/identity/{id}/edit','IdentityController@edit');
+    Route::post('identity/{id}','IdentityController@update');
+    Route::resource('identity','IdentityController');
 });

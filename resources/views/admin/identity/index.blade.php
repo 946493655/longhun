@@ -46,7 +46,7 @@
                         <td>{{ $data->datum() }}</td>
                         <td>
                             <button class="btn btn-default"
-                                    onclick="window.location.href='/lhadmin/identity/'+{{ $data->id }}+'/edit';">修改
+                                    onclick="window.location.href='/lhadmin/'+{{ $data->uid }}+'/identity/'+{{ $data->id }}+'/edit';">修改
                             </button>
                         </td>
                     </tr>

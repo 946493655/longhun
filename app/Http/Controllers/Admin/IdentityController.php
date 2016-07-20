@@ -31,9 +31,9 @@ class IdentityController extends BaseController
         return view('admin.identity.index', $result);
     }
 
-    public function create($uname)
+    public function create($uid)
     {
-        if (!$this->getUid($uname)) {
+        if (!$this->getUser($uid)) {
             echo "<script>alert('无此会员！');history.go(-1);</script>";exit;
         }
         $result = [
@@ -41,20 +41,30 @@ class IdentityController extends BaseController
             'crumb'=> $this->crumbs,
             'curr_url'=> $this->curr_url,
             'curr_detail'=> '添加',
-            'uname'=> $uname,
+            'uid'=> $uid,
         ];
         return view('admin.identity.create',$result);
     }
 
     public function store(Request $request,$uname)
     {
+        //限制雷同身份
+        if (IdentitysModel::where(['uid'=>$request->uid, 'genre'=>$request->genre])->first()) {
+            echo "<script>alert('已有类似记录！');history.go(-1);</script>";exit;
+        }
+        //身份数量上限
+        $identitys = IdentitysModel::where('uid',$request->uid)->get();
+
+        if (count($identitys)>=count($this->model['genres'])) {
+            echo "<script>alert('此会员身份已全！');history.go(-1);</script>";exit;
+        }
         $data = $this->getData($request,$uname);
         $data['created_at'] = date('Y-m-d H:i:s',time());
         IdentitysModel::create($data);
         return redirect('/lhadmin/user');
     }
 
-    public function edit($id)
+    public function edit($uid,$id)
     {
         $result = [
             'data'=> IdentitysModel::find($id),
@@ -62,13 +72,15 @@ class IdentityController extends BaseController
             'crumb'=> $this->crumbs,
             'curr_url'=> $this->curr_url,
             'curr_detail'=> '修改',
+            'uid'=> $uid,
         ];
         return view('admin.identity.edit',$result);
     }
 
-    public function update(Request $request,$uname,$id)
+    public function update(Request $request,$id)
     {
-        $data = $this->getData($request,$uname);
+        dd($request->all());
+        $data = $this->getData($request);
         $data['updated_at'] = date('Y-m-d H:i:s',time());
         IdentitysModel::where('id',$id)->update($data);
         return redirect('/lhadmin/identity');
@@ -90,13 +102,13 @@ class IdentityController extends BaseController
 
 
 
-    public function getData(Request $request,$uname)
+    public function getData(Request $request)
     {
         if (!$request->genre) {
             echo "<script>alert('身份必选！');history.go(-1);</script>";exit;
         }
         $data = [
-            'uid'=> $this->getUid($uname),
+            'uid'=> $request->uid,
             'genre'=> $request->genre,
             'qq'=> $request->qq,
             'mobile'=> $request->mobile,
@@ -114,9 +126,9 @@ class IdentityController extends BaseController
         return IdentitysModel::where('uid',$uid)->paginate($this->limit);
     }
 
-    public function getUid($uname)
+    public function getUser($uid)
     {
-        $userModel = UserModel::where('username',$uname)->first();
+        $userModel = UserModel::find($uid);
         return $userModel ? $userModel->id : '';
     }
 }
