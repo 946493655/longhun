@@ -1,7 +1,6 @@
 {{--面包屑导航--}}
 
 
-<!-- Page Heading -->
 <div class="row">
     {{--<div class="col-lg-12">--}}
         {{--<h1 class="page-header">Dashboard <small>Statistics Overview</small></h1>--}}
@@ -22,9 +21,9 @@
                 </li>
             @endif
         </ol>
+        @if(isset($curr_detail))<p style="color:lightgrey;font-size:12px;">(<span class="star">*</span>)的为必填项</p>@endif
     </div>
 </div>
-<!-- /.row -->
 
 {{--提示--}}
 {{--<div class="row">--}}

@@ -2,13 +2,13 @@
 @section('content')
     <div class="row" style="margin:0;">
         <div class="col-lg-6 table_w">
-            <h2>管理员列表 ({{ count($datas) }})</h2>
+            <h2>会员列表 ({{ count($datas) }})</h2>
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table_center">
                     <thead>
                     <tr>
-                        <th>昵称</th>
-                        <th>类型</th>
+                        <th>名称</th>
+                        <th>类型数</th>
                         <th>密码更新</th>
                         <th>操作</th>
                     </tr>
@@ -18,15 +18,15 @@
                         @foreach($datas as $data)
                     <tr>
                         <td>{{ $data->username }}</td>
-                        <td>{{ $data->genreName() }}</td>
+                        <td>{{ count($data->getUserIdentity()) }}</td>
                         <td>{{ $data->ispwd() }}</td>
                         <td>
                             <button class="btn btn-default"
-                                    onclick="window.location.href='/lhadmin/admin/'+{{ $data->id }}+'/edit';">修改
+                                    onclick="window.location.href='/lhadmin/user/'+{{ $data->id }};">详情
                             </button>
-                            {{--<button class="btn btn-default"--}}
-                                    {{--onclick="window.location.href='/lhadmin/admin/'+{{ $data->id }}+'/pwd';">密码--}}
-                            {{--</button>--}}
+                            <button class="btn btn-default"
+                                    onclick="window.location.href='/lhadmin/user/'+{{ $data->id }}+'/edit';">修改
+                            </button>
                         </td>
                     </tr>
                         @endforeach
@@ -35,7 +35,7 @@
                         <td colspan="4">
                             {{--<a href="/lhadmin/admin/create">添加管理员</a>--}}
                             <button class="btn btn-default"
-                                    onclick="window.location.href='/lhadmin/admin/create';">添加管理员</button>
+                                    onclick="window.location.href='/lhadmin/user/create';">添加会员</button>
                         </td>
                     </tr>
                     </tbody>

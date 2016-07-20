@@ -1,0 +1,7 @@
+/*================== 这里是后台自定义样式 ==================*/
+
+
+div { font-family:"微软雅黑"; }
+.star { color:red;position:relative;top:3px; }
+.table_center,.table_center th { text-align:center; }
+.table_w { width:70%; }

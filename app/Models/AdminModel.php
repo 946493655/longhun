@@ -1,6 +1,8 @@
 <?php
 namespace App\Models;
 
+use Illuminate\Support\Facades\Hash;
+
 class AdminModel extends BaseModel
 {
     /**
@@ -10,7 +12,7 @@ class AdminModel extends BaseModel
     protected $table = 'admin';
 
     protected $fillable = [
-        'id','uid','genre','created_at','updated_at',
+        'id','username','realname','pwd','genre','created_at','updated_at',
     ];
 
     //管理员身份级别：超管，主管，培训，接待，...
@@ -19,27 +21,18 @@ class AdminModel extends BaseModel
     ];
 
     /**
-     * 获取用户信息
+     * 获取管理员类型
      */
-    public function getUser()
+    public function genreName()
     {
-        return $this->uid ? UserModel::find($this->uid) : '';
+        return array_key_exists($this->genre,$this->genres) ? $this->genres[$this->genre] : '';
     }
 
     /**
-     * 获取用户名称
+     * 检查是否初始密码
      */
-    public function getUserName()
+    public function ispwd()
     {
-        return $this->getUser() ? $this->getUser()->username : '';
-    }
-
-    /**
-     * 获取用户类型
-     */
-    public function getUserGenreName()
-    {
-        $genre = $this->getUser() ? $this->getUser()->genre : '';
-        return array_key_exists($genre,$this->genres) ? $this->genres[$genre] : '';
+        return Hash::check(123456,$this->pwd) ? "初始密码" : "已更新";
     }
 }

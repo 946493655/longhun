@@ -2,17 +2,18 @@
 @section('content')
     <div class="row">
         <div class="col-lg-6 table_w">
-            <form role="form" action="/lhadmin/admin" method="POST" enctype="multipart/form-data">
+            <form role="form" action="/lhadmin/admin/{{ $data->id }}" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="_method" value="POST">
                 <div class="form-group">
                     <label>昵称</label> &nbsp;(<span class="star">*</span>)
-                    <input type="text" class="form-control" placeholder="2-6个字符" name="name">
+                    <input type="text" class="form-control" placeholder="2-6个字符" name="name" value="{{ $data->getUserName() }}">
                     <p class="help-block star" id="name"></p>
                 </div>
 
                 <div class="form-group">
                     <label>真实姓名</label> &nbsp;(<span class="star">*</span>)
-                    <input type="text" class="form-control" placeholder="不少于2个字符" name="realname">
+                    <input type="text" class="form-control" placeholder="不少于2个字符" name="realname" value="{{ $data->getUserRealName() }}">
                     <p class="help-block star" id="realname"></p>
                 </div>
 
@@ -21,16 +22,17 @@
                     <br>
                     @foreach($model['genres'] as $kgenre=>$vgenre)
                     <label class="radio-inline">
-                        <input type="radio" name="genre" id="optionsRadiosInline1" value="{{ $kgenre }}" {{ $kgenre==1 ? 'checked' : '' }}> {{ $vgenre }}
+                        <input type="radio" name="genre" id="optionsRadiosInline1" value="{{ $kgenre }}" {{ $kgenre==$data->genre ? 'checked' : '' }}> {{ $vgenre }}
                     </label>
                     @endforeach
                 </div>
 
                 <div class="form-group">
-                    <label>默认初始密码</label><br>123456
+                    <label>密码更新</label> &nbsp;
+                    {{ $data->ispwd() }}
                 </div>
 
-                <button type="submit" class="btn btn-default">保存添加</button>
+                <button type="submit" class="btn btn-default">保存修改</button>
             </form>
         </div>
         @include('admin.layout.info')

@@ -1,22 +1,23 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
-use App\Models\AdminModel;
+use App\Models\IdentitysModel;
+use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class AdminController extends BaseController
+class UserController extends BaseController
 {
     /**
      * 系统后台控制器
      */
 
-    protected $curr_url = 'admin';
+    protected $curr_url = 'user';
 
     public function __construct()
     {
         parent::__construct();
-        $this->model = new AdminModel();
+        $this->model = new UserModel();
     }
 
     public function index($genre=0)
@@ -26,7 +27,7 @@ class AdminController extends BaseController
             'crumb'=> $this->crumbs,
             'curr_url'=> $this->curr_url,
         ];
-        return view('admin.admin.index', $result);
+        return view('admin.user.index', $result);
     }
 
     public function create()
@@ -37,7 +38,7 @@ class AdminController extends BaseController
             'curr_url'=> $this->curr_url,
             'curr_detail'=> '添加',
         ];
-        return view('admin.admin.create',$result);
+        return view('admin.user.create',$result);
     }
 
     public function store(Request $request)
@@ -45,28 +46,43 @@ class AdminController extends BaseController
         $data = $this->getData($request);
         $data['pwd'] = Hash::make(123456);      //初始密码123456
         $data['created_at'] = date('Y-m-d H:i:s',time());
-        AdminModel::create($data);
-        return redirect('/lhadmin/admin');
+        UserModel::create($data);
+        //身份表
+        $userModel = UserModel::where('username',$data['username'])->first();
+        $this->addIdentity($userModel->id,$data['genre']);
+        return redirect('/lhadmin/user');
     }
 
     public function edit($id)
     {
         $result = [
-            'data'=> AdminModel::find($id),
+            'data'=> UserModel::find($id),
             'model'=> $this->model,
             'crumb'=> $this->crumbs,
             'curr_url'=> $this->curr_url,
             'curr_detail'=> '修改',
         ];
-        return view('admin.admin.edit',$result);
+        return view('admin.user.edit',$result);
     }
 
     public function update(Request $request,$id)
     {
         $data = $this->getData($request);
         $data['updated_at'] = date('Y-m-d H:i:s',time());
-        AdminModel::where('id',$id)->update($data);
-        return redirect('/lhadmin/admin');
+        UserModel::where('id',$id)->update($data);
+        return redirect('/lhadmin/user');
+    }
+
+    public function show($id)
+    {
+        $result = [
+            'data'=> UserModel::find($id),
+            'model'=> $this->model,
+            'crumb'=> $this->crumbs,
+            'curr_url'=> $this->curr_url,
+            'curr_detail'=> '详情',
+        ];
+        return view('admin.user.show',$result);
     }
 
 
@@ -98,10 +114,23 @@ class AdminController extends BaseController
     public function query($genre)
     {
         if ($genre) {
-            $datas = AdminModel::where('genre',$genre)->paginate($this->limit);
+            $datas = UserModel::where('genre',$genre)->paginate($this->limit);
         } else {
-            $datas = AdminModel::paginate($this->limit);
+            $datas = UserModel::paginate($this->limit);
         }
         return $datas;
+    }
+
+    /**
+     *  更新身份表
+     */
+    public function addIdentity($uid,$genre)
+    {
+        $data = array(
+            'uid'=> $uid,
+            'genre'=> $genre,
+            'created_at'=> date('Y-m-d H:i:s',time()),
+        );
+        IdentitysModel::create($data);
     }
 }

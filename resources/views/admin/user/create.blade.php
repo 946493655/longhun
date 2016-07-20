@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-6 table_w">
-            <form role="form" action="/lhadmin/admin" method="POST" enctype="multipart/form-data">
+            <form role="form" action="/lhadmin/user" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                     <label>昵称</label> &nbsp;(<span class="star">*</span>)
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>管理类型</label> &nbsp;(<span class="star">*</span>)
+                    <label>会员类型</label> &nbsp;(<span class="star">*</span>)
                     <br>
                     @foreach($model['genres'] as $kgenre=>$vgenre)
                     <label class="radio-inline">

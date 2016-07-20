@@ -45,9 +45,33 @@
         </li>
         <li>
             <a href="/lhadmin/admin"><i class="fa fa-fw fa-table"></i> 管理员</a>
+            {{--<a href="javascript:;" data-toggle="collapse" data-target="#demo">--}}
+                {{--<i class="fa fa-fw fa-arrows-v"></i> 管理员--}}
+                {{--<i class="fa fa-fw fa-caret-down"></i>--}}
+            {{--</a>--}}
+            {{--<ul id="demo" class="collapse">--}}
+                {{--<li>--}}
+                    {{--<a href="/lhadmin/admin"><i class="fa fa-fw fa-table"></i> 管理列表</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                    {{--<a href="/lhadmin/admin/{id}/pwd"><i class="fa fa-fw fa-edit"></i> 你的密码</a>--}}
+                {{--</li>--}}
+            {{--</ul>--}}
         </li>
         <li>
-            <a href="/lhadmin/user"><i class="fa fa-fw fa-table"></i> 会员</a>
+            {{--<a href="/lhadmin/user"><i class="fa fa-fw fa-table"></i> 会员</a>--}}
+            <a href="javascript:;" data-toggle="collapse" data-target="#demo">
+                <i class="fa fa-fw fa-arrows-v"></i> 会员
+                <i class="fa fa-fw fa-caret-down"></i>
+            </a>
+            <ul id="demo" class="collapse">
+                <li>
+                    <a href="/lhadmin/user"><i class="fa fa-fw fa-table"></i> 管理列表</a>
+                </li>
+                <li>
+                    <a href="/lhadmin/identity"><i class="fa fa-fw fa-edit"></i> 身份查询</a>
+                </li>
+            </ul>
         </li>
     </ul>
 </div>
