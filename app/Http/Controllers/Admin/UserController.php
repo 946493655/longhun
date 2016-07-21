@@ -50,7 +50,7 @@ class UserController extends BaseController
         //身份表
         $userModel = UserModel::where('username',$data['username'])->first();
         $this->addIdentity($userModel->id,$data['genre']);
-        return redirect('/lhadmin/user');
+        return redirect(DOMAIN.'lhadmin/user');
     }
 
     public function edit($id)
@@ -70,7 +70,7 @@ class UserController extends BaseController
         $data = $this->getData($request);
         $data['updated_at'] = date('Y-m-d H:i:s',time());
         UserModel::where('id',$id)->update($data);
-        return redirect('/lhadmin/user');
+        return redirect(DOMAIN.'lhadmin/user');
     }
 
     public function show($id)

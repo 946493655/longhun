@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-6 table_w">
-            <form role="form" action="/lhadmin/user" method="POST" enctype="multipart/form-data">
+            <form role="form" action="{{DOMAIN}}lhadmin/user" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="uid" value="{{ $uid }}">
                 {{--<div class="form-group">--}}

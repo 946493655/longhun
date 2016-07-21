@@ -7,7 +7,9 @@
             <div class="form-group">
                 <label>会员(昵称)</label>
                 <input type="text" class="form-control" placeholder="不少于2个字符" name="name" value="{{ $uname }}">
-                <p class="help-block star" id="name">{{ count($datas) ? "找到".count($datas)."个身份" : "" }}</p>
+                <p class="help-block star" id="name">
+                    {{ count($datas) ? "找到".count($datas)."个身份" : "没有找到会员，继续查找" }}
+                </p>
                 <button type="button" class="btn btn-default" id="search">立即查找</button>
             </div>
             <hr>
@@ -15,12 +17,12 @@
                 $(document).ready(function(){
                     var name = $("input[name='name']");
                     $("#search").click(function(){
-                        if (name.val().length<2 || name.val().length>6) {
+                        if (name.val()!='' && (name.val().length<2 || name.val().length>6)) {
                             $("#name").html("昵称在2-6个字符之间！");
                         } else if (name.val().length>=2 && name.val().length<=6) {
-                            window.location.href = "/lhadmin/"+name.val()+"/identity";
+                            window.location.href = "{{DOMAIN}}lhadmin/"+name.val()+"/identity";
                         } else if (name.val()=='') {
-                            window.location.href = "/lhadmin/identity";
+                            window.location.href = "{{DOMAIN}}lhadmin/identity";
                         }
                     });
                 });
@@ -46,7 +48,7 @@
                         <td>{{ $data->datum() }}</td>
                         <td>
                             <button class="btn btn-default"
-                                    onclick="window.location.href='/lhadmin/'+{{ $data->uid }}+'/identity/'+{{ $data->id }}+'/edit';">修改
+                                    onclick="window.location.href='{{DOMAIN}}lhadmin/'+{{ $data->uid }}+'/identity/'+{{ $data->id }}+'/edit';">修改
                             </button>
                         </td>
                     </tr>
@@ -57,7 +59,7 @@
                         <td colspan="4">
                             {{--<a href="/lhadmin/admin/create">添加管理员</a>--}}
                             <button class="btn btn-default"
-                                    onclick="window.location.href='/lhadmin/'+{{ $data->uid }}+'/identity/create';">添加身份</button>
+                                    onclick="window.location.href='{{DOMAIN}}lhadmin/'+{{ $data->uid }}+'/identity/create';">添加身份</button>
                         </td>
                     </tr>
                     @endif

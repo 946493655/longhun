@@ -46,7 +46,7 @@ class AdminController extends BaseController
         $data['pwd'] = Hash::make(123456);      //初始密码123456
         $data['created_at'] = date('Y-m-d H:i:s',time());
         AdminModel::create($data);
-        return redirect('/lhadmin/admin');
+        return redirect(DOMAIN.'lhadmin/admin');
     }
 
     public function edit($id)
@@ -66,7 +66,7 @@ class AdminController extends BaseController
         $data = $this->getData($request);
         $data['updated_at'] = date('Y-m-d H:i:s',time());
         AdminModel::where('id',$id)->update($data);
-        return redirect('/lhadmin/admin');
+        return redirect(DOMAIN.'lhadmin/admin');
     }
 
 

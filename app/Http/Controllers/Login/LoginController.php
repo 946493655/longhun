@@ -16,7 +16,11 @@ class LoginController extends BaseController
 
     public function index()
     {
-        return view('login.login');
+        $result = [
+            'domain'=> DOMAIN,
+            'pub'=> PUB,
+        ];
+        return view('login.login',$result);
     }
 
     public function login(Request $request)
@@ -74,6 +78,6 @@ class LoginController extends BaseController
     {
         //去除session
         Session::forget('user');
-        return redirect('/');
+        return redirect(DOMAIN);
     }
 }

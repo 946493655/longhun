@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="/sb-admin 1.0.4/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/sb-admin 1.0.4/css/sb-admin.css" rel="stylesheet">
+    <link href="{{DOMAIN}}sb-admin 1.0.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{DOMAIN}}sb-admin 1.0.4/css/sb-admin.css" rel="stylesheet">
     {{--<link href="/sb-admin 1.0.4/css/bootstrap-rtl.min.css" rel="stylesheet">--}}
     {{--<link href="/sb-admin 1.0.4/css/sb-admin-rtl.css" rel="stylesheet">--}}
-    <link href="/sb-admin 1.0.4/css/plugins/morris.css" rel="stylesheet">
-    <link href="/sb-admin 1.0.4/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="/css/admin.css" rel="stylesheet" type="text/css">
+    <link href="{{DOMAIN}}sb-admin 1.0.4/css/plugins/morris.css" rel="stylesheet">
+    <link href="{{DOMAIN}}sb-admin 1.0.4/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{DOMAIN}}css/admin.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,7 +23,7 @@
     <![endif]-->
 
     {{--js事件--}}
-    <script src="/js/jquery.min.js"></script>
+    <script src="{{DOMAIN}}js/jquery.min.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -45,12 +45,12 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="/sb-admin 1.0.4/js/jquery.js"></script>
+<script src="{{DOMAIN}}sb-admin 1.0.4/js/jquery.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="/sb-admin 1.0.4/js/bootstrap.min.js"></script>
+<script src="{{DOMAIN}}sb-admin 1.0.4/js/bootstrap.min.js"></script>
 <!-- Morris Charts JavaScript -->
-<script src="/sb-admin 1.0.4/js/plugins/morris/raphael.min.js"></script>
-<script src="/sb-admin 1.0.4/js/plugins/morris/morris.min.js"></script>
-<script src="/sb-admin 1.0.4/js/plugins/morris/morris-data.js"></script>
+<script src="{{DOMAIN}}sb-admin 1.0.4/js/plugins/morris/raphael.min.js"></script>
+<script src="{{DOMAIN}}sb-admin 1.0.4/js/plugins/morris/morris.min.js"></script>
+<script src="{{DOMAIN}}sb-admin 1.0.4/js/plugins/morris/morris-data.js"></script>
 </body>
 </html>

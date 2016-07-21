@@ -22,10 +22,10 @@
                         <td>{{ $data->ispwd() }}</td>
                         <td>
                             <button class="btn btn-default"
-                                    onclick="window.location.href='/lhadmin/user/'+{{ $data->id }};">详情
+                                    onclick="window.location.href='{{DOMAIN}}lhadmin/user/'+{{ $data->id }};">详情
                             </button>
                             <button class="btn btn-default"
-                                    onclick="window.location.href='/lhadmin/user/'+{{ $data->id }}+'/edit';">修改
+                                    onclick="window.location.href='{{DOMAIN}}lhadmin/user/'+{{ $data->id }}+'/edit';">修改
                             </button>
                         </td>
                     </tr>
@@ -35,7 +35,7 @@
                         <td colspan="4">
                             {{--<a href="/lhadmin/admin/create">添加管理员</a>--}}
                             <button class="btn btn-default"
-                                    onclick="window.location.href='/lhadmin/user/create';">添加会员</button>
+                                    onclick="window.location.href='{{DOMAIN}}lhadmin/user/create';">添加会员</button>
                         </td>
                     </tr>
                     </tbody>

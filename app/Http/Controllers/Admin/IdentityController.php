@@ -61,7 +61,7 @@ class IdentityController extends BaseController
         $data = $this->getData($request,$uname);
         $data['created_at'] = date('Y-m-d H:i:s',time());
         IdentitysModel::create($data);
-        return redirect('/lhadmin/user');
+        return redirect(DOMAIN.'lhadmin/user');
     }
 
     public function edit($uid,$id)
@@ -79,11 +79,10 @@ class IdentityController extends BaseController
 
     public function update(Request $request,$id)
     {
-        dd($request->all());
         $data = $this->getData($request);
         $data['updated_at'] = date('Y-m-d H:i:s',time());
         IdentitysModel::where('id',$id)->update($data);
-        return redirect('/lhadmin/identity');
+        return redirect(DOMAIN.'lhadmin/identity');
     }
 
     public function show($id)
@@ -121,7 +120,7 @@ class IdentityController extends BaseController
 
     public function query($uname)
     {
-        $userModel = UserModel::where('username',$uname)->first();
+        $userModel = UserModel::where('username','like','%'.$uname.'%')->get();
         $uid = $userModel ? $userModel->id : 0;
         return IdentitysModel::where('uid',$uid)->paginate($this->limit);
     }

@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     {{--<link rel="icon" type="image/png" href="/assets/images/icon.png">--}}
     {{--<link rel="stylesheet" type="text/css" href="/assets-home/css/home.css">--}}
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/amazeui.js"></script>
+    <script src="{{$pub}}js/jquery.min.js"></script>
+    <script src="{{$pub}}js/amazeui.js"></script>
     <style>
         body { font-family:"黑体"; }
         .title { color:black;font-size:50px;text-align:center; }
@@ -24,7 +24,7 @@
 </head>
 <body>
 <p class="title"><b>带你挣钱带你飞！</b></p>
-<form method="POST" enctype="multipart/form-data" action="/dologin">
+<form method="POST" enctype="multipart/form-data" action="{{$domain}}dologin">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type="hidden" name="_method" value="POST">
     <table>
