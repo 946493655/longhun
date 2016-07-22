@@ -42,7 +42,7 @@ class LoginController extends BaseController
         if (!$userModel) {
             echo "<script>alert('无此会员！！');history.go(-1);</script>";exit;
         }
-        if (!(Hash::check($request->pwd, $userModel->password))) {
+        if (!(Hash::check($request->pwd, $userModel->pwd))) {
             echo "<script>alert('密码不对！');history.go(-1);</script>";exit;
         }
 

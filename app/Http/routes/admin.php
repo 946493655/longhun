@@ -1,7 +1,15 @@
 <?php
 
+//登录
+Route::group(['prefix' => 'lhadmin','namespace'=>'Admin'], function(){
+    Route::get('login', 'LoginController@login');
+    Route::post('login', 'LoginController@doLogin');
+    Route::get('logout', 'LoginController@dologout');
+});
 
-Route::group(['prefix'=>'lhadmin','namespace'=>'Admin'],function(){
+
+//后台页面
+Route::group(['prefix'=>'lhadmin','middleware'=>'AdminAuth','namespace'=>'Admin'],function(){
     //首页
     Route::get('/','HomeController@index');
     Route::resource('home','HomeController');
