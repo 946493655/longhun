@@ -12,6 +12,7 @@ class IdentityController extends BaseController
     public function index()
     {
         return view('member.identity.index', array(
+//        return view('member.main', array(
                 'data'=> $this->query(),
             ));
     }

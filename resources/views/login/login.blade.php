@@ -24,7 +24,7 @@
 </head>
 <body>
 <p class="title"><b>带你挣钱带你飞！</b></p>
-<form method="POST" enctype="multipart/form-data" action="{{$domain}}dologin">
+<form method="POST" enctype="multipart/form-data" action="{{$domain}}login">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type="hidden" name="_method" value="POST">
     <table>

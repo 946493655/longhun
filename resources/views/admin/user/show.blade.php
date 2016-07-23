@@ -20,7 +20,7 @@
                             <td>{{ $data->realname }}</td>
                             <td>{{ count($data->getUserIdentity()) }}</td>
                             <td>{{ $data->ispwd() }}</td>
-                            <td>{{ $data->created_at }}</td>
+                            <td>{{ $data->createTime() }}</td>
                         </tr>
                     </tbody>
                 </table>

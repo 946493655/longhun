@@ -12,11 +12,11 @@ class UserModel extends BaseModel
     protected $table = 'users';
 
     protected $fillable = [
-        'id','username','realname','pwd','created_at','updated_at',
+        'id','username','realname','pwd','pwd_ori','created_at','updated_at','lastLogin',
     ];
 
     protected $genres = [
-        1=>'会员','高级会员','至尊会员','钻石会员',
+        1=>'高级会员','至尊会员','钻石会员',
     ];
 
     /**
@@ -24,7 +24,7 @@ class UserModel extends BaseModel
      */
     public function ispwd()
     {
-        return Hash::check(123456,$this->pwd) ? "初始密码" : "已更新";
+        return Hash::check(PWD_INIT,$this->pwd) ? "初始密码" : "已更新";
     }
 
     public function getUserIdentity()

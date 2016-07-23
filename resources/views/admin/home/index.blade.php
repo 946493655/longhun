@@ -94,6 +94,7 @@
                 </a>
             </div>
         </div>
+        @include('admin.layout.info')
     </div>
 
     {{--图表--}}

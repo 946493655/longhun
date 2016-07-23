@@ -10,12 +10,17 @@ Route::group(['prefix' => 'lhadmin','namespace'=>'Admin'], function(){
 
 //后台页面
 Route::group(['prefix'=>'lhadmin','middleware'=>'AdminAuth','namespace'=>'Admin'],function(){
+//Route::group(['prefix'=>'lhadmin','namespace'=>'Admin'],function(){
     //首页
     Route::get('/','HomeController@index');
     Route::resource('home','HomeController');
     //管理员
     Route::get('{genre}/admin','AdminController@index');
-//    Route::get('admin/{id}/pwd','AdminController@index');
+    Route::get('admin/setting','AdminController@setting');
+    Route::post('admin/setting/{id}','AdminController@updateSetting');
+    Route::get('admin/pwd','AdminController@pwd');
+    Route::get('admin/setPwd/{pwd1}/{pwd2}','AdminController@setPwd');
+    Route::post('admin/{id}','AdminController@update');
     Route::resource('admin','AdminController');
     //用户
     Route::get('{genre}/user','UserController@index');

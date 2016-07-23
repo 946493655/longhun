@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Login;
 
+use App\Models\UserLogModel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -14,7 +15,7 @@ class LoginController extends BaseController
      * 会员登录
      */
 
-    public function index()
+    public function login()
     {
         $result = [
             'domain'=> DOMAIN,
@@ -23,7 +24,10 @@ class LoginController extends BaseController
         return view('login.login',$result);
     }
 
-    public function login(Request $request)
+    /**
+     * 会员登录
+     */
+    public function dologin(Request $request)
     {
         if (!$request->name || !$request->pwd) {
             echo "<script>alert('昵称或密码必填！');history.go(-1);</script>";exit;
@@ -46,16 +50,27 @@ class LoginController extends BaseController
             echo "<script>alert('密码不对！');history.go(-1);</script>";exit;
         }
 
+        //更新上次登录时间
+        UserModel::where('id',$userModel->id)->update(array('lastLogin'=>time()));
+
         //登录成功，写入session
         $sessionInfo = [
             'uid'=> $userModel->id,
             'username'=> $userModel->username,
+            'realname'=> $userModel->realname,
+            'loginTime'=> time(),
         ];
         Session::put('user', $sessionInfo);
 
         //用户日志记录
+        $userlog = [
+            'uid'=> $userModel->id,
+            'loginTime'=> time(),
+        ];
+        UserLogModel::create($userlog);
 
-        echo "<script>alert('登录成功！');window.location.href='/member';";
+//        echo "<script>alert('登录成功！');window.location.href='/member';";
+        return redirect(DOMAIN.'member');
     }
 
     /**
@@ -74,8 +89,17 @@ class LoginController extends BaseController
         echo json_encode(array('code'=>'-1', 'message' =>'非法操作!'));exit;
     }
 
+    /**
+     * 退出登录
+     */
     public function logout()
     {
+        //更新用户日志
+        $user = Session::has('user') ? Session::get('user') : '';
+        $userlog = UserLogModel::where(array('uid'=>$user['uid'], 'loginTime'=>$user['loginTime']))->first();
+        if ($userlog) {
+            UserLogModel::where('id',$userlog->id)->update(array('logoutTime'=>time()));
+        }
         //去除session
         Session::forget('user');
         return redirect(DOMAIN);

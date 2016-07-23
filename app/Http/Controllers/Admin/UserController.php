@@ -44,8 +44,9 @@ class UserController extends BaseController
     public function store(Request $request)
     {
         $data = $this->getData($request);
-        $data['pwd'] = Hash::make(123456);      //初始密码123456
-        $data['created_at'] = date('Y-m-d H:i:s',time());
+        $data['pwd'] = Hash::make(PWD_INIT);      //初始密码a12345
+        $data['pwd_ori'] = PWD_INIT;      //初始密码a12345
+        $data['created_at'] = time();
         UserModel::create($data);
         //身份表
         $userModel = UserModel::where('username',$data['username'])->first();
@@ -68,7 +69,7 @@ class UserController extends BaseController
     public function update(Request $request,$id)
     {
         $data = $this->getData($request);
-        $data['updated_at'] = date('Y-m-d H:i:s',time());
+        $data['updated_at'] = time();
         UserModel::where('id',$id)->update($data);
         return redirect(DOMAIN.'lhadmin/user');
     }

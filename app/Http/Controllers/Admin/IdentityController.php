@@ -120,9 +120,17 @@ class IdentityController extends BaseController
 
     public function query($uname)
     {
-        $userModel = UserModel::where('username','like','%'.$uname.'%')->get();
-        $uid = $userModel ? $userModel->id : 0;
-        return IdentitysModel::where('uid',$uid)->paginate($this->limit);
+        if ($uname) {
+            $userModels = UserModel::where('username','like','%'.$uname.'%')->get();
+        }
+        $uidArr = array();
+        if (isset($userModels) && $userModels) {
+            foreach ($userModels as $userModel) {
+                $uidArr[] = $userModel->id;
+            }
+        }
+//        $uid = $userModel ? $userModel->id : 0;
+        return IdentitysModel::whereIn('uid',$uidArr)->paginate($this->limit);
     }
 
     public function getUser($uid)

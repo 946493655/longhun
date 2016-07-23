@@ -10,6 +10,7 @@
                         <th>昵称</th>
                         <th>类型</th>
                         <th>密码更新</th>
+                        <th>创建时间</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -20,6 +21,7 @@
                         <td>{{ $data->username }}</td>
                         <td>{{ $data->genreName() }}</td>
                         <td>{{ $data->ispwd() }}</td>
+                        <td>{{ $data->createTime() }}</td>
                         <td>
                             <button class="btn btn-default"
                                     onclick="window.location.href='{{DOMAIN}}lhadmin/admin/'+{{ $data->id }}+'/edit';">修改
@@ -32,7 +34,7 @@
                         @endforeach
                     @endif
                     <tr>
-                        <td colspan="4">
+                        <td colspan="10">
                             {{--<a href="/lhadmin/admin/create">添加管理员</a>--}}
                             <button class="btn btn-default"
                                     onclick="window.location.href='{{DOMAIN}}lhadmin/admin/create';">添加管理员</button>

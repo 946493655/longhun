@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\AdminModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends BaseController
 {
@@ -43,8 +44,9 @@ class AdminController extends BaseController
     public function store(Request $request)
     {
         $data = $this->getData($request);
-        $data['pwd'] = Hash::make(123456);      //初始密码123456
-        $data['created_at'] = date('Y-m-d H:i:s',time());
+        $data['pwd'] = Hash::make('a12345');      //初始密码a12345
+        $data['pwd_ori'] = PWD_INIT;      //初始密码a12345
+        $data['created_at'] = time();
         AdminModel::create($data);
         return redirect(DOMAIN.'lhadmin/admin');
     }
@@ -64,9 +66,78 @@ class AdminController extends BaseController
     public function update(Request $request,$id)
     {
         $data = $this->getData($request);
-        $data['updated_at'] = date('Y-m-d H:i:s',time());
+        $data['updated_at'] = time();
         AdminModel::where('id',$id)->update($data);
         return redirect(DOMAIN.'lhadmin/admin');
+    }
+
+    /**
+     * 编辑资料
+     */
+    public function setting()
+    {
+        $adminId = $this->getAdminId();
+        if (!AdminModel::find($adminId)->first()) {
+            echo "<script>alert('管理员不存在！');history.go(-1);</script>";exit;
+        }
+        $result = [
+            'data'=> AdminModel::find($adminId),
+            'model'=> $this->model,
+            'crumb'=> $this->crumbs,
+            'curr_url'=> $this->curr_url,
+            'curr_detail'=> '资料修改',
+        ];
+        return view('admin.admin.setting', $result);
+    }
+
+    /**
+     * 更新资料
+     */
+    public function updateSetting(Request $request,$id)
+    {
+        $data = $this->getData($request);
+        $data['updated_at'] = time();
+        AdminModel::where('id',$id)->update($data);
+        return redirect(DOMAIN.'lhadmin');
+    }
+
+    /**
+     * 编辑密码
+     */
+    public function pwd()
+    {
+        $adminId = $this->getAdminId();
+        if (!AdminModel::find($adminId)->first()) {
+            echo "<script>alert('管理员不存在！');history.go(-1);</script>";exit;
+        }
+        $result = [
+            'data'=> AdminModel::find($adminId),
+//            'model'=> $this->model,
+            'crumb'=> $this->crumbs,
+            'curr_url'=> $this->curr_url,
+            'curr_detail'=> '密码修改',
+        ];
+        return view('admin.admin.pwd', $result);
+    }
+
+    /**
+     * 更新密码
+     */
+    public function setPwd($pwd1,$pwd2)
+    {
+        $adminId = $this->getAdminId();
+        $adminModel = AdminModel::find($adminId);
+        if ($adminModel && !(Hash::check($pwd1, $adminModel->pwd))) {
+            echo "<script>alert('原密码不对！');history.go(-1);</script>";exit;
+        }
+        if (!preg_match('/[a-zA-Z]/',$pwd2) || !preg_match('/\d+/',$pwd2)) {
+            echo "<script>alert('新密码中必须要有数字和字母！');history.go(-1);</script>";exit;
+        }
+        if (preg_match("/[\x7f-\xff]/", $pwd2)) {
+            echo "<script>alert('新密码中不能有中文！');history.go(-1);</script>";exit;
+        }
+        AdminModel::where('id',$adminId)->update(array('pwd'=>Hash::make($pwd2), 'pwd_ori'=>$pwd2, 'updated_at'=>time()));
+        return redirect(DOMAIN.'lhadmin');
     }
 
 
@@ -97,11 +168,20 @@ class AdminController extends BaseController
 
     public function query($genre)
     {
+        $adminId = $this->getAdminId();     //排除当前登录人
         if ($genre) {
-            $datas = AdminModel::where('genre',$genre)->paginate($this->limit);
+            $datas = AdminModel::where('genre',$genre)->where('id','<>',$adminId)->paginate($this->limit);
         } else {
-            $datas = AdminModel::paginate($this->limit);
+            $datas = AdminModel::where('id','<>',$adminId)->paginate($this->limit);
         }
         return $datas;
+    }
+
+    /**
+     * 获取当前登录id
+     */
+    public function getAdminId()
+    {
+        return Session::has('admin.uid') ? Session::get('admin.uid') : 0;
     }
 }

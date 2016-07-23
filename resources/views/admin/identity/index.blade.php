@@ -17,9 +17,14 @@
                 $(document).ready(function(){
                     var name = $("input[name='name']");
                     $("#search").click(function(){
-                        if (name.val()!='' && (name.val().length<2 || name.val().length>6)) {
-                            $("#name").html("昵称在2-6个字符之间！");
-                        } else if (name.val().length>=2 && name.val().length<=6) {
+                        {{--if (name.val()!='' && (name.val().length<2 || name.val().length>6)) {--}}
+                            {{--$("#name").html("昵称在2-6个字符之间！");--}}
+                        {{--} else if (name.val().length>=2 && name.val().length<=6) {--}}
+                            {{--window.location.href = "{{DOMAIN}}lhadmin/"+name.val()+"/identity";--}}
+                        {{--} else if (name.val()=='') {--}}
+                            {{--window.location.href = "{{DOMAIN}}lhadmin/identity";--}}
+                        {{--}--}}
+                        if (name.val()!='') {
                             window.location.href = "{{DOMAIN}}lhadmin/"+name.val()+"/identity";
                         } else if (name.val()=='') {
                             window.location.href = "{{DOMAIN}}lhadmin/identity";

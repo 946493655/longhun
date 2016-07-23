@@ -44,27 +44,30 @@
             <a href="{{DOMAIN}}lhadmin"><i class="fa fa-fw fa-dashboard"></i> 首页</a>
         </li>
         <li>
-            <a href="{{DOMAIN}}lhadmin/admin"><i class="fa fa-fw fa-table"></i> 管理员</a>
-            {{--<a href="javascript:;" data-toggle="collapse" data-target="#demo">--}}
-                {{--<i class="fa fa-fw fa-arrows-v"></i> 管理员--}}
-                {{--<i class="fa fa-fw fa-caret-down"></i>--}}
-            {{--</a>--}}
-            {{--<ul id="demo" class="collapse">--}}
-                {{--<li>--}}
-                    {{--<a href="/lhadmin/admin"><i class="fa fa-fw fa-table"></i> 管理列表</a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                    {{--<a href="/lhadmin/admin/{id}/pwd"><i class="fa fa-fw fa-edit"></i> 你的密码</a>--}}
-                {{--</li>--}}
-            {{--</ul>--}}
+            {{--<a href="{{DOMAIN}}lhadmin/admin"><i class="fa fa-fw fa-table"></i> 管理员</a>--}}
+            <a href="javascript:;" data-toggle="collapse" data-target="#demo1">
+                <i class="fa fa-fw fa-arrows-v"></i> 管理员
+                <i class="fa fa-fw fa-caret-down"></i>
+            </a>
+            <ul id="demo1" class="collapse">
+                <li>
+                    <a href="/lhadmin/admin"><i class="fa fa-fw fa-table"></i> 管理列表</a>
+                </li>
+                <li>
+                    <a href="/lhadmin/admin/setting"><i class="fa fa-fw fa-edit"></i> 你的资料</a>
+                </li>
+                <li>
+                    <a href="/lhadmin/admin/pwd"><i class="fa fa-fw fa-edit"></i> 你的密码</a>
+                </li>
+            </ul>
         </li>
         <li>
             {{--<a href="/lhadmin/user"><i class="fa fa-fw fa-table"></i> 会员</a>--}}
-            <a href="javascript:;" data-toggle="collapse" data-target="#demo">
+            <a href="javascript:;" data-toggle="collapse" data-target="#demo2">
                 <i class="fa fa-fw fa-arrows-v"></i> 会员
                 <i class="fa fa-fw fa-caret-down"></i>
             </a>
-            <ul id="demo" class="collapse">
+            <ul id="demo2" class="collapse">
                 <li>
                     <a href="{{DOMAIN}}lhadmin/user"><i class="fa fa-fw fa-table"></i> 管理列表</a>
                 </li>

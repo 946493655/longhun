@@ -10,7 +10,7 @@ class AdminLogModel extends BaseModel
     protected $table = 'admin_log';
 
     protected $fillable = [
-        'id','admin_id','loginTime','logoutTime',
+        'id','admin_id','loginTime','logoutTime','lastLogin',
     ];
 
     public function admin()
@@ -18,13 +18,13 @@ class AdminLogModel extends BaseModel
         return $this->admin_id ? AdminModel::find($this->admin_id) : '';
     }
 
-    public function loginTime()
-    {
-        return $this->loginTime ? date('Y年m月d日 H:i:s', $this->loginTime) : '';
-    }
-
-    public function logoutTime()
-    {
-        return $this->logoutTime ? date('Y年m月d日 H:i:s', $this->logoutTime) : '';
-    }
+//    public function loginTime()
+//    {
+//        return $this->loginTime ? date('Y年m月d日 H:i:s', $this->loginTime) : '';
+//    }
+//
+//    public function logoutTime()
+//    {
+//        return $this->logoutTime ? date('Y年m月d日 H:i:s', $this->logoutTime) : '';
+//    }
 }

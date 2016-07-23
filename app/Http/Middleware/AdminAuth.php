@@ -15,8 +15,9 @@ class AdminAuth
      */
     public function handle($request, Closure $next)
     {
+        if (!defined('DOMAIN')) { define('DOMAIN',getenv(strtoupper(getenv('APP_ENV')).'_DOMAIN')); }
         if(!Session::has('admin.uid')){
-            return redirect('/lhadmin/login');
+            return redirect(DOMAIN.'lhadmin/login');
         }
         //如果用户未验证或者验证未通过时重新读取用户信息
 

@@ -15,8 +15,6 @@
 //    return view('welcome');
 //});
 
-//会员入口
-include("routes/login.php");
 
 include("routes/member.php");
 

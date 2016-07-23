@@ -7,13 +7,13 @@
                 <input type="hidden" name="_method" value="POST">
                 <div class="form-group">
                     <label>昵称</label> &nbsp;(<span class="star">*</span>)
-                    <input type="text" class="form-control" placeholder="2-6个字符" name="name" value="{{ $data->getUserName() }}">
+                    <input type="text" class="form-control" placeholder="2-6个字符" name="name" value="{{ $data->username }}">
                     <p class="help-block star" id="name"></p>
                 </div>
 
                 <div class="form-group">
                     <label>真实姓名</label> &nbsp;(<span class="star">*</span>)
-                    <input type="text" class="form-control" placeholder="不少于2个字符" name="realname" value="{{ $data->getUserRealName() }}">
+                    <input type="text" class="form-control" placeholder="不少于2个字符" name="realname" value="{{ $data->realname }}">
                     <p class="help-block star" id="realname"></p>
                 </div>
 
@@ -21,14 +21,16 @@
                     <label>管理类型</label> &nbsp;(<span class="star">*</span>)
                     <br>
                     @foreach($model['genres'] as $kgenre=>$vgenre)
+                        @if($kgenre)
                     <label class="radio-inline">
                         <input type="radio" name="genre" id="optionsRadiosInline1" value="{{ $kgenre }}" {{ $kgenre==$data->genre ? 'checked' : '' }}> {{ $vgenre }}
                     </label>
+                        @endif
                     @endforeach
                 </div>
 
                 <div class="form-group">
-                    <label>密码更新</label> &nbsp;
+                    <label>密码更新情况</label> &nbsp;
                     {{ $data->ispwd() }}
                 </div>
 

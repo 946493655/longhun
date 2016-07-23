@@ -12,12 +12,12 @@ class AdminModel extends BaseModel
     protected $table = 'admin';
 
     protected $fillable = [
-        'id','username','realname','pwd','genre','created_at','updated_at',
+        'id','username','realname','pwd','pwd_ori','genre','created_at','updated_at',
     ];
 
     //管理员身份级别：超管，主管，培训，接待，...
     protected $genres = [
-        1=>'超管','主管','培训','接待',
+        0=>'站长',1=>'超管','主管','培训','接待',
     ];
 
     /**
@@ -33,6 +33,6 @@ class AdminModel extends BaseModel
      */
     public function ispwd()
     {
-        return Hash::check(123456,$this->pwd) ? "初始密码" : "已更新";
+        return Hash::check(PWD_INIT,$this->pwd) ? "初始密码" : "已更新";
     }
 }

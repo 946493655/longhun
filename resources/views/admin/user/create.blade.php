@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>默认初始密码</label><br>123456
+                    <label>默认初始密码</label><br>a12345
                 </div>
 
                 <button type="submit" class="btn btn-default">保存添加</button>

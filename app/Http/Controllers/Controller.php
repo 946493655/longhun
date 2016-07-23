@@ -14,7 +14,11 @@ abstract class Controller extends BaseController
     public function __construct()
     {
         //定义域名常量
-        define('DOMAIN',getenv(strtoupper(getenv('APP_ENV')).'_DOMAIN'));
-        define('PUB',getenv(strtoupper(getenv('APP_ENV')).'_PUB'));
+        if (!defined('DOMAIN')) { define('DOMAIN',getenv(strtoupper(getenv('APP_ENV')).'_DOMAIN')); }
+        if (!defined('PUB')) {
+            define('PUB',getenv(strtoupper(getenv('APP_ENV')).'_PUB'));
+        }
+        //定义默认密码
+        if (!defined('PWD_INIT')) { define('PWD_INIT','a12345'); }
     }
 }

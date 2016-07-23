@@ -16,7 +16,7 @@
     </style>
     <div style="height:150px;">{{--空白--}}</div>
     <div class="out">
-        <p><b>龙魂世界</b></p>
+        <p><b>龙魂世界后台</b></p>
         <form role="form" method="POST" action="{{$domain}}lhadmin/login" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <table>
@@ -26,7 +26,7 @@
                 </tr>
                 <tr>
                     <td>密 码：</td>
-                    <td><input type="text" name="pwd" placeholder="字母数字组合，6-20位"></td>
+                    <td><input type="password" name="pwd" placeholder="字母数字组合，6-20位"></td>
                 </tr>
             </table>
             <p class="star"></p>
@@ -41,15 +41,21 @@
     <script>
         $(document).ready(function(){
             $("input[name='name']").blur(function(){
-                if ($(this).val()=='') { $(".star").html("昵称必填！"); }
-                if ($(this).val().length<2 || $(this).val().length>6) {
+                if ($(this).val()=='') {
+                    $(".star").html("昵称必填！");
+                } else if ($(this).val().length<2 || $(this).val().length>6) {
                     $(".star").html("昵称在2-6个字符之间！");
+                } else {
+                    $(".star").html("");
                 }
             });
             $("input[name='pwd']").blur(function(){
-                if ($(this).val()=='') { $(".star").html("密码必填！"); }
-                if ($(this).val().length<6 || $(this).val().length>20) {
+                if ($(this).val()=='') {
+                    $(".star").html("密码必填！");
+                } if ($(this).val().length<6 || $(this).val().length>20) {
                     $(".star").html("密码在6-20个字符之间！");
+                } else {
+                    $(".star").html("");
                 }
             });
         });

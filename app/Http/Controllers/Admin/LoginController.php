@@ -23,6 +23,9 @@ class LoginController extends BaseController
         return view('admin.login', $result);
     }
 
+    /**
+     * 后台登录
+     */
     public function dologin(Request $request)
     {
         //一些验证
@@ -34,6 +37,9 @@ class LoginController extends BaseController
         }
         if (!preg_match('/[a-zA-Z]/',$request->pwd) || !preg_match('/\d+/',$request->pwd)) {
             echo "<script>alert('密码中必须要有数字和字母！');history.go(-1);</script>";exit;
+        }
+        if (preg_match("/[\x7f-\xff]/", $request->pwd)) {
+            echo "<script>alert('密码中不能有中文！');history.go(-1);</script>";exit;
         }
         if (mb_strlen($request->pwd)<6 || mb_strlen($request->pwd)>20) {
             echo "<script>alert('注意密码6-20位！');history.go(-1);</script>";exit;
@@ -47,29 +53,44 @@ class LoginController extends BaseController
             echo "<script>alert('密码不对！');history.go(-1);</script>";exit;
         }
 
+        //更新上次登录时间
+        AdminModel::where('id',$adminModel->id)->update(array('lastLogin'=> time()));
+
         //登录成功，写入session
-        $time = time();
         $sessionInfo = [
             'uid'=> $adminModel->id,
             'username'=> $adminModel->username,
-            'loginTime'=> date('Y年m月d日 H时i分',$time),
+            'realname'=> $adminModel->realname,
+            'genre'=> $adminModel->genreName(),
+            'loginTime'=> time(),
+            'lastLogin'=> $adminModel->lastLogin,
         ];
         Session::put('admin', $sessionInfo);
 
-        //用户日志记录
+        //管理员日志记录
         $adminlog = [
             'admin_id'=> $adminModel->id,
-            'loginTime'=> $time,
+            'loginTime'=> time(),
         ];
         AdminLogModel::create($adminlog);
 
-        echo "<script>alert('登录成功！');window.location.href=".DOMAIN."'lhadmin';";
+//        echo "<script>alert('登录成功！');window.location.href='".DOMAIN."lhadmin';</script>"; exit;
+        return redirect(DOMAIN.'lhadmin');
     }
 
+    /**
+     * 后台退出
+     */
     public function dologout()
     {
+        //更新管理员日志
+        $admin = Session::has('admin') ? Session::get('admin') : '';
+        $adminlog = AdminLogModel::where(array('admin_id'=>$admin['uid'], 'loginTime'=>$admin['loginTime']))->first();
+        if ($adminlog) {
+            AdminLogModel::where('id',$adminlog->id)->update(array('logoutTime'=>time()));
+        }
         //去除session
         Session::forget('admin');
-        return redirect(DOMAIN);
+        return redirect(DOMAIN.'lhadmin');
     }
 }
