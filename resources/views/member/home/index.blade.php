@@ -9,10 +9,10 @@
         <div id="pad-wrapper" class="user-profile">
             <!-- header -->
             <div class="row-fluid header">
-                <div class="span8">
+                <div class="span8" style="font-family:'黑体';">
                     <img src="{{PUB}}detail-admin/img/contact-profile.png" class="avatar img-circle" />
-                    <h3 class="name">Alejandra Galván Castillo</h3>
-                    <span class="area">Graphic Designer</span>
+                    <h3 class="name">九哥 - 九哥</h3>
+                    <span class="area">杭州 滨江</span>
                 </div>
                 <a class="btn-flat icon pull-right delete-user" data-toggle="tooltip" title="Delete user" data-placement="top">
                     <i class="icon-trash"></i>
@@ -32,26 +32,10 @@
                         </div>
 
                         {{--环图表--}}
-                        <div class="row-fluid section">
-                            <h4 class="title">jQuery Knob</h4>
-                            <div class="row-fluid">
-                                <div class="span3">
-                                    <input type="text" value="50" class="knob second" data-thickness=".3" data-inputcolor="#333" data-fgcolor="#30a1ec" data-bgcolor="#d4ecfd" data-width="140" />
-                                </div>
-                                <div class="span3">
-                                    <input type="text" value="75" class="knob second" data-thickness=".3" data-inputcolor="#333" data-fgcolor="#8ac368" data-bgcolor="#c4e9aa" data-width="140" />
-                                </div>
-                                <div class="span3">
-                                    <input type="text" value="35" class="knob second" data-thickness=".3" data-inputcolor="#333" data-fgcolor="#5ba0a3" data-bgcolor="#cef3f5" data-width="140" />
-                                </div>
-                                <div class="span3">
-                                    <input type="text" value="85" class="knob second" data-thickness=".3" data-inputcolor="#333" data-fgcolor="#b85e80" data-bgcolor="#f8d2e0" data-width="140" />
-                                </div>
-                            </div>
-                        </div>
+                        @include('member.home.ring')
 
                         {{--以下是列表--}}
-                        <h6>Recent orders</h6>
+                        <h6>今日订单 Today Order</h6>
                         <br />
                         <table class="table table-hover">
                             <thead>
@@ -108,23 +92,24 @@
                 </div>
 
                 <!-- 右侧信息 -->
-                <div class="span3 address pull-right">
-                    <h6>Address</h6>
-                    <iframe width="300" height="133" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.mx/?ie=UTF8&amp;t=m&amp;ll=19.715081,-155.071421&amp;spn=0.010746,0.025749&amp;z=14&amp;output=embed"></iframe>
-                    <ul>
-                        <li>2301 East Lamar Blvd. Suite 140. </li>
-                        <li>City, Arlington. United States,</li>
-                        <li>Zip Code, TX 76006.</li>
-                        <li class="ico-li">
-                            <i class="ico-phone"></i>
-                            1817 274 2933
-                        </li>
-                        <li class="ico-li">
-                            <i class="ico-mail"></i>
-                            <a href="#">alejandra@detailcanvas.com</a>
-                        </li>
-                    </ul>
-                </div>
+                @include('member.layout.info')
+                {{--<div class="span3 address pull-right">--}}
+                    {{--<h6>Address</h6>--}}
+                    {{--<iframe width="300" height="133" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.mx/?ie=UTF8&amp;t=m&amp;ll=19.715081,-155.071421&amp;spn=0.010746,0.025749&amp;z=14&amp;output=embed"></iframe>--}}
+                    {{--<ul>--}}
+                        {{--<li>2301 East Lamar Blvd. Suite 140. </li>--}}
+                        {{--<li>City, Arlington. United States,</li>--}}
+                        {{--<li>Zip Code, TX 76006.</li>--}}
+                        {{--<li class="ico-li">--}}
+                            {{--<i class="ico-phone"></i>--}}
+                            {{--1817 274 2933--}}
+                        {{--</li>--}}
+                        {{--<li class="ico-li">--}}
+                            {{--<i class="ico-mail"></i>--}}
+                            {{--<a href="#">alejandra@detailcanvas.com</a>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
             </div>
         </div>
     </div>

@@ -1,7 +1,6 @@
 {{--会员左边--}}
 
 
-<!-- sidebar -->
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
         <li class="active">
@@ -11,86 +10,51 @@
             </div>
             <a href="index.html">
                 <i class="icon-home"></i>
-                <span>Home</span>
-            </a>
-        </li>
-        <li>
-            <a href="chart-showcase.html">
-                <i class="icon-signal"></i>
-                <span>Charts</span>
+                <span>首页</span>
             </a>
         </li>
         <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-group"></i>
-                <span>Users</span>
+                <span>您的账户</span>
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="user-list.html">User list</a></li>
-                <li><a href="new-user.html">New user form</a></li>
-                <li><a href="user-profile.html">User profile</a></li>
+                <li><a href="user-profile.html">基本资料</a></li>
+                <li><a href="user-list.html">您的身份</a></li>
+                <li><a href="new-user.html">增加身份</a></li>
+                <li><a href="user-profile.html">您的推荐</a></li>
+                <li><a href="user-profile.html">您的接待</a></li>
+                <li><a href="user-profile.html">您的培训</a></li>
             </ul>
         </li>
         <li>
             <a class="dropdown-toggle" href="#">
                 <i class="icon-edit"></i>
-                <span>Forms</span>
+                <span>自定流程</span>
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="form-showcase.html">Form showcase</a></li>
-                <li><a href="form-wizard.html">Form wizard</a></li>
+                <li><a href="{{DOMAIN}}member/farm">单子列表</a></li>
+                <li><a href="{{DOMAIN}}member/farm/create">添加单子</a></li>
             </ul>
-        </li>
-        <li>
-            <a href="gallery.html">
-                <i class="icon-picture"></i>
-                <span>Gallery</span>
-            </a>
-        </li>
-        <li>
-            <a href="calendar.html">
-                <i class="icon-calendar-empty"></i>
-                <span>Calendar</span>
-            </a>
-        </li>
-        <li>
-            <a href="tables.html">
-                <i class="icon-th-large"></i>
-                <span>Tables</span>
-            </a>
-        </li>
-        <li>
-            <a class="dropdown-toggle ui-elements" href="#">
-                <i class="icon-code-fork"></i>
-                <span>UI Elements</span>
-                <i class="icon-chevron-down"></i>
-            </a>
-            <ul class="submenu">
-                <li><a href="ui-elements.html">UI Elements</a></li>
-                <li><a href="icons.html">Icons</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="personal-info.html">
-                <i class="icon-cog"></i>
-                <span>My Info</span>
-            </a>
         </li>
         <li>
             <a class="dropdown-toggle" href="#">
-                <i class="icon-share-alt"></i>
-                <span>Extras</span>
+                <i class="icon-th-large"></i>
+                <span>单子列表</span>
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="code-editor.html">Code editor</a></li>
-                <li><a href="grids.html">Grids</a></li>
-                <li><a href="signin.html">Sign in</a></li>
-                <li><a href="signup.html">Sign up</a></li>
+                <li><a href="user-list.html">主持</a></li>
+                <li><a href="user-list.html">单子</a></li>
             </ul>
+        </li>
+        <li>
+            <a href="chart-showcase.html">
+                <i class="icon-signal"></i>
+                <span>单子流程</span>
+            </a>
         </li>
     </ul>
 </div>
-<!-- end sidebar -->

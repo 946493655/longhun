@@ -73,6 +73,37 @@ INSERT INTO `admin_log` VALUES (1,1,1469262166,1469262803),(2,1,1469262813,14692
 UNLOCK TABLES;
 
 --
+-- Table structure for table `farms`
+--
+
+DROP TABLE IF EXISTS `farms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `farms` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `genre` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '单子类型：淘宝单，天猫单，一号店，京东单，蘑菇街，美丽说，浏览单，关注单，扫码单，注册单',
+  `uid` int(10) unsigned NOT NULL DEFAULT '0',
+  `level` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '(星号等)等级',
+  `money` float(5,2) unsigned NOT NULL DEFAULT '0.00' COMMENT '做单子的价格，单位元',
+  `intro` varchar(255) NOT NULL COMMENT '内容要求',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '状态：未下单，下单，付款，发货，收货，评价，追评，完成',
+  `del` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '删除字段：0未删除，1已删除',
+  `created_at` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `updated_at` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='自定义单子表 farms';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `farms`
+--
+
+LOCK TABLES `farms` WRITE;
+/*!40000 ALTER TABLE `farms` DISABLE KEYS */;
+/*!40000 ALTER TABLE `farms` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `identitys`
 --
 
@@ -130,7 +161,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'九哥','九哥','$2y$10$reh/Cff/tf3W8k5Jr9FfY.sG2BUS1iq/wuS29FXHVNibbSNDCcsOu','a12345',1469265270,0,1469267914);
+INSERT INTO `users` VALUES (1,'九哥','九哥','$2y$10$reh/Cff/tf3W8k5Jr9FfY.sG2BUS1iq/wuS29FXHVNibbSNDCcsOu','a12345',1469265270,0,1469348029);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +178,7 @@ CREATE TABLE `users_log` (
   `loginTime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '登录时间',
   `logoutTime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '登出时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='用户日志表 users_log';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='用户日志表 users_log';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +187,7 @@ CREATE TABLE `users_log` (
 
 LOCK TABLES `users_log` WRITE;
 /*!40000 ALTER TABLE `users_log` DISABLE KEYS */;
-INSERT INTO `users_log` VALUES (1,1,1469265478,0),(2,1,1469265517,0),(3,1,1469267127,0),(4,1,1469267914,0);
+INSERT INTO `users_log` VALUES (1,1,1469265478,0),(2,1,1469265517,0),(3,1,1469267127,0),(4,1,1469267914,0),(5,1,1469320042,1469333661),(6,1,1469333670,0),(7,1,1469348029,0);
 /*!40000 ALTER TABLE `users_log` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -169,4 +200,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-23 20:32:31
+-- Dump completed on 2016-07-24 18:52:20

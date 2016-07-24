@@ -24,6 +24,9 @@
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    {{--js事件--}}
+    <script src="{{PUB}}js/jquery.min.js"></script>
 <body>
 @include('member.layout.header')
 @include('member.layout.left')

@@ -92,7 +92,7 @@ class LoginController extends BaseController
     /**
      * 退出登录
      */
-    public function logout()
+    public function dologout()
     {
         //更新用户日志
         $user = Session::has('user') ? Session::get('user') : '';

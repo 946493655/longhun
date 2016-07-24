@@ -51,21 +51,21 @@
                 <span class="number">0</span>
                 任务
             </div>
-            <span class="date">详情</span>
+            <span class="date">TASK</span>
         </div>
         <div class="span3 stat">
             <div class="data">
                 <span class="number">0</span>
                 订单
             </div>
-            <span class="date">详情</span>
+            <span class="date">ORDER</span>
         </div>
         <div class="span3 stat last">
             <div class="data">
                 <span class="number">0</span>
                 卡卷
             </div>
-            <span class="date">详情</span>
+            <span class="date">CARD VOLUMN</span>
         </div>
     </div>
 </div>
