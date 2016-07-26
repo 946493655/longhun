@@ -51,21 +51,23 @@ class LoginController extends BaseController
         }
 
         //更新上次登录时间
-        UserModel::where('id',$userModel->id)->update(array('lastLogin'=>time()));
+        $time = time();
+        UserModel::where('id',$userModel->id)->update(array('lastLogin'=>$time));
 
         //登录成功，写入session
         $sessionInfo = [
             'uid'=> $userModel->id,
             'username'=> $userModel->username,
             'realname'=> $userModel->realname,
-            'loginTime'=> time(),
+            'loginTime'=> $time,
+            'lastLogin'=> $time,
         ];
         Session::put('user', $sessionInfo);
 
         //用户日志记录
         $userlog = [
             'uid'=> $userModel->id,
-            'loginTime'=> time(),
+            'loginTime'=> $time,
         ];
         UserLogModel::create($userlog);
 

@@ -13,6 +13,8 @@ Route::group(['prefix'=>'/','namespace'=>'Login'],function(){
 
 Route::group(['prefix'=>'member','middleware'=>'MemberAuth','namespace'=>'Member'],function(){
     Route::resource('/','HomeController');
-    Route::get('farm/{genre}/{status}','FarmController@index');
+    Route::get('farm/index/{genre}/{status}','FarmController@index');
+    Route::post('farm/{id}','FarmController@update');
+    Route::get('farm/{id}/destroy','FarmController@destroy');
     Route::resource('farm','FarmController');
 });

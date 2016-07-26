@@ -32,4 +32,19 @@ class FarmModel extends BaseModel
     {
         return $this->uid ? UserModel::find($this->uid) : '';
     }
+
+    public function genreName()
+    {
+       return array_key_exists($this->genre,$this->genres) ? $this->genres[$this->genre] : '';
+    }
+
+    public function statusName()
+    {
+       return array_key_exists($this->status,$this->statuss) ? $this->statuss[$this->status] : '';
+    }
+
+    public function money()
+    {
+        return $this->money ? $this->money.'元' : '';
+    }
 }

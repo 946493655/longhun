@@ -40,14 +40,32 @@ class FarmController extends BaseController
     {
         $data = $this->getData($request);
         $data['created_at'] = time();
-        dd($data);
         FarmModel::create($data);
         return redirect(DOMAIN.'member/farm');
     }
 
-    public function edit(){}
+    public function edit($id)
+    {
+        $result = [
+            'data'=> FarmModel::find($id),
+            'model'=> $this->model,
+        ];
+        return view('member.farm.edit', $result);
+    }
 
-    public function update(){}
+    public function update(Request $request,$id)
+    {
+        $data = $this->getData($request);
+        $data['updated_at'] = time();
+        FarmModel::where('id',$id)->update($data);
+        return redirect(DOMAIN.'member/farm');
+    }
+
+    public function destroy($id)
+    {
+        FarmModel::where('id',$id)->update(array('del'=>1));
+        return redirect(DOMAIN.'member/farm');
+    }
 
 
 

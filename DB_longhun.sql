@@ -91,7 +91,7 @@ CREATE TABLE `farms` (
   `created_at` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `updated_at` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='自定义单子表 farms';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='自定义单子表 farms';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,6 +100,7 @@ CREATE TABLE `farms` (
 
 LOCK TABLES `farms` WRITE;
 /*!40000 ALTER TABLE `farms` DISABLE KEYS */;
+INSERT INTO `farms` VALUES (1,1,1,1,5.10,'hntrjtdrjhrtjrtjrtfj',1,0,1469524829,1469537329);
 /*!40000 ALTER TABLE `farms` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +162,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'九哥','九哥','$2y$10$reh/Cff/tf3W8k5Jr9FfY.sG2BUS1iq/wuS29FXHVNibbSNDCcsOu','a12345',1469265270,0,1469348029);
+INSERT INTO `users` VALUES (1,'九哥','九哥','$2y$10$reh/Cff/tf3W8k5Jr9FfY.sG2BUS1iq/wuS29FXHVNibbSNDCcsOu','a12345',1469265270,0,1469536954);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,7 +179,7 @@ CREATE TABLE `users_log` (
   `loginTime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '登录时间',
   `logoutTime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '登出时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='用户日志表 users_log';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户日志表 users_log';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -187,7 +188,7 @@ CREATE TABLE `users_log` (
 
 LOCK TABLES `users_log` WRITE;
 /*!40000 ALTER TABLE `users_log` DISABLE KEYS */;
-INSERT INTO `users_log` VALUES (1,1,1469265478,0),(2,1,1469265517,0),(3,1,1469267127,0),(4,1,1469267914,0),(5,1,1469320042,1469333661),(6,1,1469333670,0),(7,1,1469348029,0);
+INSERT INTO `users_log` VALUES (1,1,1469536954,0);
 /*!40000 ALTER TABLE `users_log` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -200,4 +201,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-24 18:52:20
+-- Dump completed on 2016-07-26 20:55:34
