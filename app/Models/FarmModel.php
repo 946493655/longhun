@@ -38,6 +38,11 @@ class FarmModel extends BaseModel
        return array_key_exists($this->genre,$this->genres) ? $this->genres[$this->genre] : '';
     }
 
+    public function levelName()
+    {
+       return array_key_exists($this->level,$this->levels) ? $this->levels[$this->level] : '';
+    }
+
     public function statusName()
     {
        return array_key_exists($this->status,$this->statuss) ? $this->statuss[$this->status] : '';

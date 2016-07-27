@@ -22,6 +22,7 @@ class FarmController extends BaseController
         $result = [
             'datas'=> $this->query($genre,$status),
             'model'=> $this->model,
+            'prefix_url'=> DOMAIN.'member/farm',
             'genre'=> $genre,
             'status'=> $status,
         ];
@@ -61,10 +62,34 @@ class FarmController extends BaseController
         return redirect(DOMAIN.'member/farm');
     }
 
+    public function show($id)
+    {
+        $result = [
+            'data'=> FarmModel::find($id),
+            'model'=> $this->model,
+        ];
+        return view('member.farm.show', $result);
+    }
+
     public function destroy($id)
     {
         FarmModel::where('id',$id)->update(array('del'=>1));
         return redirect(DOMAIN.'member/farm');
+    }
+
+    public function status($id)
+    {
+        $result = [
+            'data'=> FarmModel::find($id),
+            'model'=> $this->model,
+        ];
+        return view('member.farm.status', $result);
+    }
+
+    public function setStatus($id,$status)
+    {
+        FarmModel::where('id',$id)->update(array('status'=> $status));
+        return redirect(DOMAIN.'member/farm/status/'.$id);
     }
 
 
@@ -120,6 +145,7 @@ class FarmController extends BaseController
                 ->orderBy('id','desc')
                 ->paginate($this->limit);
         }
+        if (isset($datas) && $datas) { $datas->limit = $this->limit; }
         return $datas;
     }
 }

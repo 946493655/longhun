@@ -11,25 +11,55 @@
 
                 <div class="row-fluid filter-block">
                     <div class="pull-right">
-                        <div class="ui-select">
+                        类型
+                        <div class="ui-select" style="width:50px;">
                             <select name="genre">
+                                <option value="0" {{ $genre==0 ? 'selected' : '' }}>所有</option>
                                 @foreach($model['genres'] as $kgenre=>$vgenre)
-                                <option value="{{ $kgenre }}">{{ $vgenre }}</option>
+                                <option value="{{ $kgenre }}" {{ $genre==$kgenre ? 'selected' : '' }}>{{ $vgenre }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <input type="text" class="search" />
-                        <a class="btn-flat success new-product" href="{{DOMAIN}}member/farm/create">+ Add product</a>
+                        &nbsp;
+                        状态
+                        <div class="ui-select" style="width:50px;">
+                            <select name="status">
+                                <option value="0" {{ $status==0 ? 'selected' : '' }}>所有</option>
+                                @foreach($model['statuss'] as $kstatus=>$vstatus)
+                                <option value="{{ $kstatus }}" {{ $status==$kstatus ? 'selected' : '' }}>{{ $vstatus }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        &nbsp;
+                        {{--<input type="text" class="search"/>--}}
+                        <a class="btn-flat success new-product" href="{{DOMAIN}}member/farm/create">+ 添加单子</a>
                     </div>
+                    <script>
+                        $(document).ready(function(){
+                            var genre = $("select[name='genre']");
+                            var status = $("select[name='status']");
+                            genre.change(function(){
+                                if (genre.val()==0 && status.val()==0) {
+                                    window.location.href = '{{DOMAIN}}member/farm';
+                                } else {
+                                    window.location.href = '{{DOMAIN}}member/farm/'+genre.val()+'/'+status.val();
+                                }
+                            });
+                            status.change(function(){
+                                if (genre.val()==0 && status.val()==0) {
+                                    window.location.href = '{{DOMAIN}}member/farm';
+                                } else {
+                                    window.location.href = '{{DOMAIN}}member/farm/'+genre.val()+'/'+status.val();
+                                }
+                            });
+                        });
+                    </script>
                 </div>
 
                 <div class="row-fluid">
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            {{--<th class="span3">--}}
-                                {{--<input type="checkbox"/> ID--}}
-                            {{--</th>--}}
                             <th style="width:50px;">ID</th>
                             <th class="span3" class="span3">
                                 <span class="line"></span>类型
@@ -46,7 +76,7 @@
                             <th class="span3">
                                 <span class="line"></span>创建时间
                             </th>
-                            <th class="span3">操作</th>
+                            <th class="span3" style="width:30%;">操作</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -57,9 +87,6 @@
                                 <label><input type="checkbox"/> {{ $data->id }}</label>
                             </td>
                             <td>
-                                {{--<div class="img">--}}
-                                    {{--<img src="{{DOMAIN}}detail-admin/img/table-img.png"/>--}}
-                                {{--</div>--}}
                                 <a href="{{DOMAIN}}member/farm/{{ $data->id }}" class="name">{{ $data->genreName() }}</a>
                             </td>
                             <td class="description">{{ $data->money() }}</td>
@@ -67,56 +94,17 @@
                             <td class="description">{{ $data->statusName() }}</td>
                             <td class="description">{{ $data->createTime() }}</td>
                             <td>
-                                {{--<span class="label label-success">Active</span>--}}
-                                {{--<ul class="actions">--}}
-                                    {{--<li><a href="#">修改</a></li>--}}
-                                    {{--<li class="last"><a href="#">删除</a></li>--}}
-                                {{--</ul>--}}
+                                <a href="{{DOMAIN}}member/farm/{{ $data->id }}" class="btn btn-default">查看</a>
+                                <a href="{{DOMAIN}}member/farm/status/{{ $data->id }}" class="btn btn-default">走流程</a>
                                 <a href="{{DOMAIN}}member/farm/{{ $data->id }}/edit" class="btn btn-default">修改</a>
                                 <a href="{{DOMAIN}}member/farm/{{ $data->id }}/destroy" class="btn btn-default">删除</a>
                             </td>
                         </tr>
                             @endforeach
                         @endif
-                        {{--<tr>--}}
-                            {{--<td>--}}
-                                {{--<input type="checkbox" />--}}
-                                {{--<div class="img">--}}
-                                    {{--<img src="{{DOMAIN}}detail-admin/img/table-img.png" />--}}
-                                {{--</div>--}}
-                                {{--<a href="#" class="name">Internet tend</a>--}}
-                            {{--</td>--}}
-                            {{--<td class="description">--}}
-                                {{--There are many variations of passages.--}}
-                            {{--</td>--}}
-                            {{--<td>--}}
-                                {{--<span class="label label-info">Standby</span>--}}
-                                {{--<ul class="actions">--}}
-                                    {{--<li><a href="#">Edit</a></li>--}}
-                                    {{--<li class="last"><a href="#">Delete</a></li>--}}
-                                {{--</ul>--}}
-                            {{--</td>--}}
-                        {{--</tr>--}}
-                        {{--<tr>--}}
-                            {{--<td>--}}
-                                {{--<input type="checkbox" />--}}
-                                {{--<div class="img">--}}
-                                    {{--<img src="{{DOMAIN}}detail-admin/img/table-img.png" />--}}
-                                {{--</div>--}}
-                                {{--<a href="#" class="name">Internet tend</a>--}}
-                            {{--</td>--}}
-                            {{--<td class="description">--}}
-                                {{--There are many variations of passages.--}}
-                            {{--</td>--}}
-                            {{--<td>--}}
-                                {{--<ul class="actions">--}}
-                                    {{--<li><a href="#">Edit</a></li>--}}
-                                    {{--<li class="last"><a href="#">Delete</a></li>--}}
-                                {{--</ul>--}}
-                            {{--</td>--}}
-                        {{--</tr>--}}
                         </tbody>
                     </table>
+                    @include('member.layout.page')
                 </div>
             </div>
         </div>
