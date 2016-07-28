@@ -115,15 +115,15 @@ CREATE TABLE `identitys` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户id',
   `genre` tinyint(3) unsigned NOT NULL COMMENT '身份类型：1会员，2高级会员，3至尊会员，4钻石会员',
-  `qq` int(15) unsigned NOT NULL DEFAULT '0' COMMENT 'qq号码',
-  `mobile` int(15) unsigned NOT NULL DEFAULT '0' COMMENT '手机号码',
+  `qq` bigint(15) unsigned NOT NULL DEFAULT '0' COMMENT 'qq号码',
+  `mobile` bigint(15) unsigned NOT NULL DEFAULT '0' COMMENT '手机号码',
   `taobao` varchar(255) NOT NULL COMMENT '淘宝账号',
   `zfb` varchar(255) NOT NULL COMMENT '支付宝账号',
   `address` varchar(255) NOT NULL COMMENT '地址',
-  `created_at` date NOT NULL DEFAULT '0000-00-00' COMMENT '创建时间',
-  `updated_at` date NOT NULL DEFAULT '0000-00-00' COMMENT '更新时间',
+  `created_at` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `updated_at` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='身份表 identitys';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='身份表 identitys';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,7 +132,7 @@ CREATE TABLE `identitys` (
 
 LOCK TABLES `identitys` WRITE;
 /*!40000 ALTER TABLE `identitys` DISABLE KEYS */;
-INSERT INTO `identitys` VALUES (1,1,3,0,0,'','','','2016-07-20','0000-00-00'),(2,2,2,0,0,'','','','2016-07-23','0000-00-00'),(3,1,2,0,0,'','','','2016-07-23','0000-00-00'),(4,1,2,0,0,'','','','2016-07-23','0000-00-00');
+INSERT INTO `identitys` VALUES (1,1,1,2857156840,15990909090,'zwx946493655','15988129456','嘉兴市洪兴西路2323号海州之星',1469702693,1469709894);
 /*!40000 ALTER TABLE `identitys` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,6 +149,12 @@ CREATE TABLE `users` (
   `realname` varchar(255) NOT NULL COMMENT '真实姓名',
   `pwd` varchar(255) NOT NULL COMMENT '登陆密码，hash加密',
   `pwd_ori` varchar(255) NOT NULL COMMENT '未加密密码',
+  `idcard` varchar(255) NOT NULL COMMENT '身份证号码',
+  `zfb` varchar(255) NOT NULL COMMENT '收款支付宝账号',
+  `mobile` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '手机号码',
+  `recommend_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '您的推荐人，recommend',
+  `recept_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '您的接待人，recept',
+  `train_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '您的 培训人，train',
   `created_at` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `updated_at` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   `lastLogin` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '最近登录时间',
@@ -162,7 +168,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'九哥','九哥','$2y$10$reh/Cff/tf3W8k5Jr9FfY.sG2BUS1iq/wuS29FXHVNibbSNDCcsOu','a12345',1469265270,0,1469608093);
+INSERT INTO `users` VALUES (1,'九哥','九哥','$2y$10$reh/Cff/tf3W8k5Jr9FfY.sG2BUS1iq/wuS29FXHVNibbSNDCcsOu','a12345','','',0,0,0,0,1469265270,0,1469702489);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -179,7 +185,7 @@ CREATE TABLE `users_log` (
   `loginTime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '登录时间',
   `logoutTime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '登出时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='用户日志表 users_log';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='用户日志表 users_log';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -188,7 +194,7 @@ CREATE TABLE `users_log` (
 
 LOCK TABLES `users_log` WRITE;
 /*!40000 ALTER TABLE `users_log` DISABLE KEYS */;
-INSERT INTO `users_log` VALUES (1,1,1469536954,0),(2,1,1469578200,0),(3,1,1469586646,0),(4,1,1469608093,0);
+INSERT INTO `users_log` VALUES (1,1,1469536954,0),(2,1,1469578200,0),(3,1,1469586646,0),(4,1,1469608093,0),(5,1,1469661718,0),(6,1,1469677778,0),(7,1,1469691583,0),(8,1,1469702489,0);
 /*!40000 ALTER TABLE `users_log` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -201,4 +207,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-27 20:52:11
+-- Dump completed on 2016-07-28 21:10:36

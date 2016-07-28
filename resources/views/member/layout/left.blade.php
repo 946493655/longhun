@@ -8,7 +8,7 @@
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
             </div>
-            <a href="index.html">
+            <a href="{{DOMAIN}}member">
                 <i class="icon-home"></i>
                 <span>首页</span>
             </a>
@@ -20,12 +20,13 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="user-profile.html">基本资料</a></li>
-                <li><a href="user-list.html">您的身份</a></li>
-                <li><a href="new-user.html">增加身份</a></li>
-                <li><a href="user-profile.html">您的推荐</a></li>
-                <li><a href="user-profile.html">您的接待</a></li>
-                <li><a href="user-profile.html">您的培训</a></li>
+                <li><a href="{{DOMAIN}}member/user">基本资料</a></li>
+                <li><a href="{{DOMAIN}}member/identity">您的身份</a></li>
+                <li><a href="{{DOMAIN}}member/identity/create">增加身份</a></li>
+                <li><a href="{{DOMAIN}}member/contact">联系人</a></li>
+                {{--<li><a href="user-profile.html">您的推荐</a></li>--}}
+                {{--<li><a href="user-profile.html">您的接待</a></li>--}}
+                {{--<li><a href="user-profile.html">您的培训</a></li>--}}
             </ul>
         </li>
         <li>

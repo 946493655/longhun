@@ -13,6 +13,9 @@ Route::group(['prefix'=>'/','namespace'=>'Login'],function(){
 
 Route::group(['prefix'=>'member','middleware'=>'MemberAuth','namespace'=>'Member'],function(){
     Route::resource('/','HomeController');
+    Route::resource('user','UserController');
+    Route::post('identity/{id}','IdentityController@update');
+    Route::resource('identity','IdentityController');
     Route::post('farm/{id}','FarmController@update');
     Route::get('farm/status/{id}','FarmController@status');
     Route::get('farm/status/{id}/{status}','FarmController@setStatus');

@@ -61,7 +61,7 @@
                         <thead>
                         <tr>
                             <th style="width:50px;">ID</th>
-                            <th class="span3" class="span3">
+                            <th class="span3">
                                 <span class="line"></span>类型
                             </th>
                             <th class="span3">

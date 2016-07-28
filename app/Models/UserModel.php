@@ -36,4 +36,19 @@ class UserModel extends BaseModel
     {
         return array_key_exists($this->genre,$this->genres) ? $this->genres[$this->genre] : '';
     }
+
+    public function idcard()
+    {
+        return $this->idcard ? $this->idcard : '未填写';
+    }
+
+    public function zfb()
+    {
+        return $this->zfb ? $this->zfb : '未填写';
+    }
+
+    public function mobile()
+    {
+        return $this->mobile ? $this->mobile : '未填写';
+    }
 }
