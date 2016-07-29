@@ -14,12 +14,10 @@
                     <h3 class="name">九哥 - 九哥</h3>
                     <span class="area">杭州 滨江</span>
                 </div>
-                <a class="btn-flat icon pull-right delete-user" data-toggle="tooltip" title="Delete user" data-placement="top">
-                    <i class="icon-trash"></i>
-                </a>
-                <a class="btn-flat icon large pull-right edit">
-                    Edit this person
-                </a>
+                {{--<a class="btn-flat icon pull-right delete-user" data-toggle="tooltip" title="Delete user" data-placement="top">--}}
+                    {{--<i class="icon-trash"></i>--}}
+                {{--</a>--}}
+                <a class="btn-flat icon large pull-right edit" href="{{DOMAIN}}member/user">修改信息</a>
             </div>
 
             <div class="row-fluid profile">

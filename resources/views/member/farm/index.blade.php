@@ -42,14 +42,14 @@
                                 if (genre.val()==0 && status.val()==0) {
                                     window.location.href = '{{DOMAIN}}member/farm';
                                 } else {
-                                    window.location.href = '{{DOMAIN}}member/farm/'+genre.val()+'/'+status.val();
+                                    window.location.href = '{{DOMAIN}}member/farm/index/'+genre.val()+'/'+status.val();
                                 }
                             });
                             status.change(function(){
                                 if (genre.val()==0 && status.val()==0) {
                                     window.location.href = '{{DOMAIN}}member/farm';
                                 } else {
-                                    window.location.href = '{{DOMAIN}}member/farm/'+genre.val()+'/'+status.val();
+                                    window.location.href = '{{DOMAIN}}member/farm/index/'+genre.val()+'/'+status.val();
                                 }
                             });
                         });
@@ -96,8 +96,10 @@
                             <td>
                                 <a href="{{DOMAIN}}member/farm/{{ $data->id }}" class="btn btn-default">查看</a>
                                 <a href="{{DOMAIN}}member/farm/status/{{ $data->id }}" class="btn btn-default">走流程</a>
+                                @if($data->status<2)
                                 <a href="{{DOMAIN}}member/farm/{{ $data->id }}/edit" class="btn btn-default">修改</a>
                                 <a href="{{DOMAIN}}member/farm/{{ $data->id }}/destroy" class="btn btn-default">删除</a>
+                                @endif
                             </td>
                         </tr>
                             @endforeach
@@ -105,7 +107,19 @@
                         </tbody>
                     </table>
                     @include('member.layout.page')
+                    <table class="table table-hover">
+                        <tbody>
+                        <tr>
+                            <td>本页总价：{{ $datas->totalMoney }}</td>
+                            <td>本页总单数：{{ count($datas).'单' }}</td>
+                            <td>淘宝单轮数(300单/轮)：{{ $datas->taobaoTurn }}</td>
+                            <td>本轮淘宝单数/佣金：{{ $datas->tbTurn }} / {{ $datas->tbTurnMoney }}</td>
+                            <td><a href="">计算</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
+                <p>注意：只有未下单的状态，可以修改、删除</p>
             </div>
         </div>
     </div>

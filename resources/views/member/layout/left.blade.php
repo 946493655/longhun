@@ -38,24 +38,26 @@
             <ul class="submenu">
                 <li><a href="{{DOMAIN}}member/farm">单子列表</a></li>
                 <li><a href="{{DOMAIN}}member/farm/create">添加单子</a></li>
+                <li><a href="{{DOMAIN}}member/farmDemand">账号列表</a></li>
+                <li><a href="{{DOMAIN}}member/farmSupply">主持列表</a></li>
             </ul>
         </li>
-        <li>
-            <a class="dropdown-toggle" href="#">
-                <i class="icon-th-large"></i>
-                <span>单子列表</span>
-                <i class="icon-chevron-down"></i>
-            </a>
-            <ul class="submenu">
-                <li><a href="user-list.html">主持</a></li>
-                <li><a href="user-list.html">单子</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="chart-showcase.html">
-                <i class="icon-signal"></i>
-                <span>单子流程</span>
-            </a>
-        </li>
+        {{--<li>--}}
+            {{--<a class="dropdown-toggle" href="#">--}}
+                {{--<i class="icon-th-large"></i>--}}
+                {{--<span>单子列表</span>--}}
+                {{--<i class="icon-chevron-down"></i>--}}
+            {{--</a>--}}
+            {{--<ul class="submenu">--}}
+                {{--<li><a href="user-list.html">主持</a></li>--}}
+                {{--<li><a href="user-list.html">单子</a></li>--}}
+            {{--</ul>--}}
+        {{--</li>--}}
+        {{--<li>--}}
+            {{--<a href="chart-showcase.html">--}}
+                {{--<i class="icon-signal"></i>--}}
+                {{--<span>单子流程</span>--}}
+            {{--</a>--}}
+        {{--</li>--}}
     </ul>
 </div>

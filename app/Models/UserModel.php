@@ -12,7 +12,7 @@ class UserModel extends BaseModel
     protected $table = 'users';
 
     protected $fillable = [
-        'id','username','realname','pwd','pwd_ori','created_at','updated_at','lastLogin',
+        'id','username','realname','pwd','pwd_ori','is','is_account','is_name','recommend_id','recept_id','train_id','created_at','updated_at','lastLogin',
     ];
 
     protected $genres = [

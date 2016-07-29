@@ -68,8 +68,9 @@
                                         <label>流程下一步:</label>
                                         <button class="btn btn-default" onclick="window.location.href='{{DOMAIN}}member/farm/status/'+{{ $data->id }}+'/'+{{ $data->status+1 }};" title="点击进入下一步">{{ $model['statuss'][$data->status+1] }}</button> (做单流程记录)
                                     </div>
+
                                     <div class="field-box">
-                                        <label>设置状态:</label>
+                                        <label>重置状态:</label>
                                         <div class="ui-select">
                                             <select name="status">
                                                 @foreach($model['statuss'] as $kstatus=>$vstatus)
@@ -79,12 +80,10 @@
                                         </div>
                                         <button class="btn btn-default" onclick="window.location.href='{{DOMAIN}}member/farm/status/'+{{ $data->id }}+'/'+$('select[name=status]').val();">确定</button>
                                     </div>
+
                                     <div class="field-box" style="text-align:center;">
                                         <button class="btn btn-default" onclick="window.location.href='{{DOMAIN}}member/farm';">返回列表</button>
                                     </div>
-                                    <input type="hidden" name="id" value="{{ $data->id }}">
-                                    <input type="hidden" name="status" value="{{ $data->status }}">
-                                    <input type="hidden" name="domain" value="{{ DOMAIN }}">
                                 </div>
                             </div>
                         </div>

@@ -45,7 +45,32 @@
                         <p>还可以输入 <span id="number">{{ 250-strlen($data->intro) }}</span> 字符</p>
                     </div>
 
+                    <div class="field-box">
+                        <label>对应的主持：<a href="{{DOMAIN}}member/farmSupply/create">添加主持</a></label>
+                        <div class="ui-select">
+                            <select name="supply_id" required>
+                                @foreach($supplys as $supply)
+                                    <option value="{{ $supply->id }}" {{ $supply->id==$data->supply_id ? 'selected' : '' }}/>{{ $supply->getName() }}
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="field-box">
+                        <label>使用账号：<a href="{{DOMAIN}}member/farmDemand/create">添加账号</a></label>
+                        <div class="ui-select" style="width:400px;">
+                            <select name="demand_id" required>
+                                @foreach($demands as $demand)
+                                    <option value="{{ $demand->id }}" {{ $demand->id==$data->demand_id ? 'selected' : '' }}/>{{ $demand->getName() }}
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+
                     <button type="submit" class="btn btn-default">保存修改</button>
+                    <button class="btn btn-default" onclick="history.go(-1);">返回</button>
                 </form>
                 </div>
                 @include('member.farm.info')
