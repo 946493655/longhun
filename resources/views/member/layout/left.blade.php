@@ -39,7 +39,7 @@
                 <li><a href="{{DOMAIN}}member/farm">单子列表</a></li>
                 <li><a href="{{DOMAIN}}member/farm/create">添加单子</a></li>
                 <li><a href="{{DOMAIN}}member/farmDemand">账号列表</a></li>
-                <li><a href="{{DOMAIN}}member/farmSupply">主持列表</a></li>
+                <li><a href="{{DOMAIN}}member/contact">联系人</a></li>
             </ul>
         </li>
         {{--<li>--}}

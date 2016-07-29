@@ -73,6 +73,7 @@ class FarmSupplyController extends BaseController
             'is_number'=> $request->is_number,
             'is_account'=> $request->is_account,
             'is_name'=> $request->is_name,
+            'genre'=> 1,        //1代表主持
         );
     }
 

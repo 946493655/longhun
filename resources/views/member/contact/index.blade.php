@@ -6,9 +6,9 @@
                 <div class="row-fluid head">
                     <div class="span12">
                         <h4 style="float:left;">联系人(推荐、接待、培训)</h4>
-                        {{--<div class="pull-right">--}}
-                            {{--<a class="btn-flat success new-product" href="{{DOMAIN}}member/contact/create">+ 添加联系人</a>--}}
-                        {{--</div>--}}
+                        <div class="pull-right">
+                            <a class="btn-flat success new-product" href="{{DOMAIN}}member/contact/create">+ 添加联系人</a>
+                        </div>
                     </div>
                 </div>
 

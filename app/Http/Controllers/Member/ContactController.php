@@ -1,8 +1,8 @@
 <?php
 namespace App\Http\Controllers\Member;
 
-use App\Models\IdentitysModel;
-use App\Models\UserModel;
+use App\Models\FarmSupplyModel;
+use Illuminate\Http\Request;
 
 class ContactController extends BaseController
 {
@@ -13,7 +13,7 @@ class ContactController extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this->model = new IdentitysModel();
+        $this->model = new FarmSupplyModel();
     }
 
     public function index()
@@ -26,13 +26,28 @@ class ContactController extends BaseController
         return view('member.contact.index', $result);
     }
 
+    public function create()
+    {
+        return view('member.contact.create');
+    }
+
+    public function store(Request $request)
+    {
+        return redirect(DOMAIN.'member/contact');
+    }
+
+    public function edit($id){}
+
+    public function update(Request $request,$id){}
+
+
+
+
+
     public function query()
     {
-        $userModel = UserModel::find($this->uid);
-        if ($userModel) {
-            $ids = array($userModel->recommend_id,$userModel->recept_id,$userModel->train_id);
-            $datas = UserModel::whereIn('id',$ids)->get();
-        }
-        return isset($datas) ? $datas : [];
+        return FarmSupplyModel::where(array('uid'=>$this->uid))
+                        ->whereIn('genre',[2,3,4])
+                        ->get();
     }
 }
