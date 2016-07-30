@@ -25,67 +25,58 @@
                     <div class="profile-box">
                         <!--个人信息-->
                         <div class="span12 section">
-                            <h6>Biography</h6>
-                            <p>There are many variations of passages of Lorem Ipsum available but the majority have humour suffered alteration in believable some formhumour , by injected humour, or randomised words which don't look even slightly believable. </p>
+                            <h6>{{--Biography--}}简介</h6>
+                            <p>{{ $user->intro() }}</p>
                         </div>
 
                         {{--环图表--}}
                         @include('member.home.ring')
 
                         {{--以下是列表--}}
-                        <h6>今日订单 Today Order</h6>
+                        <h6>今日单子 Today Order</h6>
                         <br />
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th class="span2">
-                                    Order ID
+                                <th class="span2"> 类型 </th>
+                                <th class="span3">
+                                    <span class="line"></span> 佣金
                                 </th>
                                 <th class="span3">
-                                    <span class="line"></span>
-                                    Date
+                                    <span class="line"></span> 状态
                                 </th>
                                 <th class="span3">
-                                    <span class="line"></span>
-                                    Items
-                                </th>
-                                <th class="span3">
-                                    <span class="line"></span>
-                                    Total amount
+                                    <span class="line"></span> 创建时间
                                 </th>
                             </tr>
                             </thead>
                             <tbody>
-                            <!-- row -->
+                            @if(count($farms))
+                                @foreach($farms as $farm)
                             <tr class="first">
-                                <td>
-                                    <a href="#">#459</a>
-                                </td>
-                                <td>
-                                    Jan 03, 2014
-                                </td>
-                                <td>
-                                    3
-                                </td>
-                                <td>
-                                    $ 3,500.00
-                                </td>
+                                <td>{{ $farm->genreName() }}</td>
+                                <td>{{ $farm->money() }}</td>
+                                <td>{{ $farm->statusName() }}</td>
+                                <td>{{ $farm->createTime() }}</td>
                             </tr>
+                                @endforeach
+                            @else <tr><td colspan="4" style="text-align:center;">没有记录</td></tr>
+                            @endif
                             </tbody>
                         </table>
 
                         <!-- 下面输入框 -->
-                        <div class="span12 section comment">
-                            <h6>Add a quick note</h6>
-                            <p>Add a note about this user to keep a history of your interactions.</p>
-                            <textarea></textarea>
-                            <a href="#">Attach files</a>
-                            <div class="span12 submit-box pull-right">
-                                <input type="submit" class="btn-glow primary" value="Add Note" />
-                                <span>OR</span>
-                                <input type="reset" value="Cancel" class="reset" />
-                            </div>
-                        </div>
+                        {{--<div class="span12 section comment">--}}
+                            {{--<h6>做个记事</h6>--}}
+                            {{--<p>Add a note about this user to keep a history of your interactions.</p>--}}
+                            {{--<textarea></textarea>--}}
+                            {{--<a href="#">Attach files</a>--}}
+                            {{--<div class="span12 submit-box pull-right">--}}
+                                {{--<input type="submit" class="btn-glow primary" value="Add Note" />--}}
+                                {{--<span>OR</span>--}}
+                                {{--<input type="reset" value="Cancel" class="reset" />--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                     </div>
                 </div>
 

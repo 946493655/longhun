@@ -42,7 +42,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (1,'九哥','九哥',1,'$2y$10$GsKQodaitpN99f/k4MgCA.E/nLU3e3Ip23T.Pau4jtZR5/QnCStYK','a12345',1469246071,1469256089,1469262977);
+INSERT INTO `admin` VALUES (1,'九哥','九哥',1,'$2y$10$GsKQodaitpN99f/k4MgCA.E/nLU3e3Ip23T.Pau4jtZR5/QnCStYK','a12345',1469246071,1469256089,1469856359);
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +59,7 @@ CREATE TABLE `admin_log` (
   `loginTime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '登录时间',
   `logoutTime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '登出时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='管理员日志表 admin_log';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='管理员日志表 admin_log';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `admin_log` (
 
 LOCK TABLES `admin_log` WRITE;
 /*!40000 ALTER TABLE `admin_log` DISABLE KEYS */;
-INSERT INTO `admin_log` VALUES (1,1,1469262166,1469262803),(2,1,1469262813,1469262973),(3,1,1469262977,0);
+INSERT INTO `admin_log` VALUES (1,1,1469262166,1469262803),(2,1,1469262813,1469262973),(3,1,1469262977,0),(4,1,1469845173,0),(5,1,1469856359,0);
 /*!40000 ALTER TABLE `admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,6 +151,8 @@ CREATE TABLE `farms_supply` (
   `is_number` int(10) unsigned NOT NULL COMMENT 'IS号码',
   `is_account` bigint(15) unsigned NOT NULL DEFAULT '0' COMMENT 'IS账号',
   `is_name` varchar(255) NOT NULL COMMENT 'IS昵称',
+  `qq` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT 'qq号码',
+  `qq_name` varchar(50) NOT NULL COMMENT 'qq昵称',
   `created_at` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `updated_at` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   PRIMARY KEY (`id`)
@@ -163,7 +165,7 @@ CREATE TABLE `farms_supply` (
 
 LOCK TABLES `farms_supply` WRITE;
 /*!40000 ALTER TABLE `farms_supply` DISABLE KEYS */;
-INSERT INTO `farms_supply` VALUES (1,0,1,0,0,'',1469524829,1469537329),(2,0,1,4294967295,398386383893838,'九哥',1469760218,0),(3,1,1,4294967295,398386383893838,'jiuge',1469760303,1469760774);
+INSERT INTO `farms_supply` VALUES (1,0,1,0,0,'',0,'',1469524829,1469537329),(2,0,1,4294967295,398386383893838,'九哥',0,'',1469760218,0),(3,1,1,4294967295,398386383893838,'jiuge',0,'',1469760303,1469760774);
 /*!40000 ALTER TABLE `farms_supply` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,18 +211,19 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL COMMENT '用户名称',
-  `realname` varchar(255) NOT NULL COMMENT '真实姓名',
+  `realname` varchar(50) NOT NULL COMMENT '真实姓名',
   `pwd` varchar(255) NOT NULL COMMENT '登陆密码，hash加密',
-  `pwd_ori` varchar(255) NOT NULL COMMENT '未加密密码',
-  `idcard` varchar(255) NOT NULL COMMENT '身份证号码',
-  `zfb` varchar(255) NOT NULL COMMENT '收款支付宝账号',
+  `pwd_ori` varchar(20) NOT NULL COMMENT '未加密密码',
+  `intro` varchar(255) NOT NULL COMMENT '简介',
+  `idcard` varchar(20) NOT NULL COMMENT '身份证号码',
+  `zfb` varchar(20) NOT NULL COMMENT '收款支付宝账号',
   `mobile` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '手机号码',
   `recommend_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '您的推荐人，recommend',
   `recept_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '您的接待人，recept',
   `train_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '您的 培训人，train',
   `is` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'is号码',
   `is_account` bigint(15) unsigned NOT NULL DEFAULT '0' COMMENT 'IS账号',
-  `is_name` varchar(255) NOT NULL COMMENT 'IS昵称',
+  `is_name` varchar(20) NOT NULL COMMENT 'IS昵称',
   `created_at` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `updated_at` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   `lastLogin` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '最近登录时间',
@@ -234,7 +237,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'九哥','九哥','$2y$10$reh/Cff/tf3W8k5Jr9FfY.sG2BUS1iq/wuS29FXHVNibbSNDCcsOu','a12345','','',0,0,0,0,0,0,'',1469265270,0,1469751731);
+INSERT INTO `users` VALUES (1,'九哥','九哥','$2y$10$reh/Cff/tf3W8k5Jr9FfY.sG2BUS1iq/wuS29FXHVNibbSNDCcsOu','a12345','','','',0,0,0,0,0,0,'',1469265270,0,1469835881);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,7 +254,7 @@ CREATE TABLE `users_log` (
   `loginTime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '登录时间',
   `logoutTime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '登出时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='用户日志表 users_log';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='用户日志表 users_log';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -260,7 +263,7 @@ CREATE TABLE `users_log` (
 
 LOCK TABLES `users_log` WRITE;
 /*!40000 ALTER TABLE `users_log` DISABLE KEYS */;
-INSERT INTO `users_log` VALUES (1,1,1469536954,0),(2,1,1469578200,0),(3,1,1469586646,0),(4,1,1469608093,0),(5,1,1469661718,0),(6,1,1469677778,0),(7,1,1469691583,0),(8,1,1469702489,0),(9,1,1469751731,0);
+INSERT INTO `users_log` VALUES (1,1,1469536954,0),(2,1,1469578200,0),(3,1,1469586646,0),(4,1,1469608093,0),(5,1,1469661718,0),(6,1,1469677778,0),(7,1,1469691583,0),(8,1,1469702489,0),(9,1,1469751731,0),(10,1,1469835881,0);
 /*!40000 ALTER TABLE `users_log` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -273,4 +276,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-07-29 19:53:16
+-- Dump completed on 2016-07-30 21:33:45

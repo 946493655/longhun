@@ -51,4 +51,9 @@ class UserModel extends BaseModel
     {
         return $this->mobile ? $this->mobile : '未填写';
     }
+
+    public function intro()
+    {
+        return $this->intro ? $this->intro : '未填写';
+    }
 }

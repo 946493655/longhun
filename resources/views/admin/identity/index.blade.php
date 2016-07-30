@@ -36,7 +36,6 @@
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table_center">
                     <thead>
-                @if(count($datas))
                     <tr>
                         <th>昵称</th>
                         <th>类型</th>
@@ -58,19 +57,17 @@
                         </td>
                     </tr>
                         @endforeach
-                    @endif
-                    @if(count($datas)<count($model['genres']))
+                        @if(count($datas)<count($model['genres']))
                     <tr>
                         <td colspan="4">
-                            {{--<a href="/lhadmin/admin/create">添加管理员</a>--}}
                             <button class="btn btn-default"
                                     onclick="window.location.href='{{DOMAIN}}lhadmin/'+{{ $data->uid }}+'/identity/create';">添加身份</button>
                         </td>
                     </tr>
+                        @endif
+                    @else
+                        <tr><td colspan="4">没有信息</td></tr>
                     @endif
-                @else
-                    <tr><td>没有信息</td></tr>
-                @endif
                     </tbody>
                 </table>
             </div>

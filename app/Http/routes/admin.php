@@ -31,4 +31,9 @@ Route::group(['prefix'=>'lhadmin','middleware'=>'AdminAuth','namespace'=>'Admin'
     Route::get('{uid}/identity/{id}/edit','IdentityController@edit');
     Route::post('identity/{id}','IdentityController@update');
     Route::resource('identity','IdentityController');
+    //用户日志
+    Route::resource('adminlog','AdminLogController');
+    Route::resource('userlog','UserLogController');
+    //自定义单子
+    Route::resource('farm','FarmController');
 });

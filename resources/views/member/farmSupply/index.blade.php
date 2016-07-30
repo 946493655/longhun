@@ -27,6 +27,12 @@
                                 <span class="line"></span>IS昵称
                             </th>
                             <th class="span3">
+                                <span class="line"></span>qq
+                            </th>
+                            <th class="span3">
+                                <span class="line"></span>qq昵称
+                            </th>
+                            <th class="span3">
                                 <span class="line"></span>创建时间
                             </th>
                             <th class="span3">操作</th>
@@ -42,6 +48,8 @@
                             <td>{{ $data->is_number }}</td>
                             <td class="description">{{ $data->is_account }}</td>
                             <td class="description">{{ $data->getName() }}</td>
+                            <td class="description">{{ $data->qq() }}</td>
+                            <td class="description">{{ $data->qqName() }}</td>
                             <td class="description">{{ $data->createTime() }}</td>
                             <td>
                                 <a href="{{DOMAIN}}member/farmSupply/{{ $data->id }}/edit" class="btn btn-default">修改</a>

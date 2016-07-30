@@ -37,7 +37,15 @@ class FarmModel extends BaseModel
     }
 
     /**
-     * 身份类型名称
+     * 发布人昵称
+     */
+    public function getUserName()
+    {
+        return $this->user() ? $this->user()->username : '';
+    }
+
+    /**
+     * 单子类型
      */
     public function genreName()
     {
@@ -82,6 +90,14 @@ class FarmModel extends BaseModel
         $supply_id = $this->supply_id ? $this->supply_id : 0;
         $farmSupplyModel = FarmSupplyModel::find($supply_id);
         return $farmSupplyModel ? $farmSupplyModel : '';
+    }
+
+    /**
+     * 主持的IS昵称
+     */
+    public function supplyIsName()
+    {
+        return $this->supply() ? $this->supply()->is_name : '';
     }
 
     /**

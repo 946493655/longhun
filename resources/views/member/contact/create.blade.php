@@ -27,6 +27,25 @@
                     </div>
                     <br>
 
+                    <div class="field-box">
+                        <label>IS昵称:</label>
+                        <input class="span8" type="text" placeholder="" minlength="2" required name="is_name"/>
+                        <p>提示：自动加上前后缀，例：莉莉 ==> 丿龍魂丶莉莉『２H㊣主持』</p>
+                    </div>
+                    <br>
+
+                    <div class="field-box">
+                        <label>qq:</label>
+                        <input class="span8" type="text" placeholder="" name="qq"/>
+                    </div>
+                    <br>
+
+                    <div class="field-box">
+                        <label>qq昵称:</label>
+                        <input class="span8" type="text" placeholder="" name="qq_name"/>
+                    </div>
+                    <br>
+
                     <button type="submit" class="btn btn-default">保存添加</button>
                     <button class="btn btn-default" onclick="history.go(-1);">返回</button>
                 </form>

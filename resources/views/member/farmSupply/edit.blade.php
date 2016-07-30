@@ -28,6 +28,18 @@
                     </div>
                     <br>
 
+                    <div class="field-box">
+                        <label>qq:</label>
+                        <input class="span8" type="text" placeholder="" name="qq" value="{{ $data->qq }}"/>
+                    </div>
+                    <br>
+
+                    <div class="field-box">
+                        <label>qq昵称:</label>
+                        <input class="span8" type="text" placeholder="" name="qq_name" value="{{ $data->qq_name }}"/>
+                    </div>
+                    <br>
+
                     <button type="submit" class="btn btn-default">保存修改</button>
                 </form>
                 </div>

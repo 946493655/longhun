@@ -44,9 +44,15 @@ class ContactController extends BaseController
 
 
 
+    public function getData(Request $request)
+    {
+        return array(
+        );
+    }
+
     public function query()
     {
-        return FarmSupplyModel::where(array('uid'=>$this->uid))
+        return FarmSupplyModel::where('uid',$this->uid)
                         ->whereIn('genre',[2,3,4])
                         ->get();
     }

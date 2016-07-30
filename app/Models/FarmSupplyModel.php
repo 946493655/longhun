@@ -10,7 +10,7 @@ class FarmSupplyModel extends BaseModel
     protected $table = 'farms_supply';
 
     protected $fillable = [
-        'id','uid','genre','is_number','is_account','is_name','created_at','updated_at',
+        'id','uid','genre','is_number','is_account','is_name','qq','qq_name','created_at','updated_at',
     ];
 
     protected $genres = [
@@ -25,5 +25,15 @@ class FarmSupplyModel extends BaseModel
     public function getName()
     {
         return $this->is_name ? '丿龍魂丶'.$this->is_name.'主持' : '';
+    }
+
+    public function qq()
+    {
+        return $this->qq ? $this->qq : '未填写';
+    }
+
+    public function qqName()
+    {
+        return $this->qq_name ? $this->qq_name : '未填写';
     }
 }
