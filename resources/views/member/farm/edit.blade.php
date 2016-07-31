@@ -22,19 +22,7 @@
                     <br>
 
                     <div class="field-box">
-                        <label>等级：</label>
-                        <div class="ui-select">
-                            <select name="level" required>
-                                @foreach($model['levels'] as $klevel=>$vlevel)
-                                <option value="{{ $klevel }}" {{ $klevel==$data->level ? 'selected' : '' }}/>{{ $vlevel }}
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <br>
-
-                    <div class="field-box">
-                        <label>价格:(元)</label>
+                        <label>佣金:(元)</label>
                         <input class="span8" type="text" placeholder="做单子的佣金，例：5.10" pattern="^(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)$" required name="money" value="{{ $data->money }}"/>
                     </div>
                     <br>
@@ -47,7 +35,7 @@
 
                     <div class="field-box">
                         <label>对应的主持：<a href="{{DOMAIN}}member/farmSupply/create">添加主持</a></label>
-                        <div class="ui-select">
+                        <div class="ui-select" style="width:400px;">
                             <select name="supply_id" required>
                                 @foreach($supplys as $supply)
                                     <option value="{{ $supply->id }}" {{ $supply->id==$data->supply_id ? 'selected' : '' }}/>{{ $supply->getName() }}
@@ -59,13 +47,26 @@
 
                     <div class="field-box">
                         <label>使用账号：<a href="{{DOMAIN}}member/farmDemand/create">添加账号</a></label>
-                        <div class="ui-select" style="width:400px;">
+                        <div class="ui-select" style="width:600px;">
                             <select name="demand_id" required>
                                 @foreach($demands as $demand)
                                     <option value="{{ $demand->id }}" {{ $demand->id==$data->demand_id ? 'selected' : '' }}/>{{ $demand->getName() }}
                                 @endforeach
                             </select>
                         </div>
+                    </div>
+                    <br>
+
+                    <div class="field-box">
+                        <label>店铺名称或旺旺：</label>
+                        <input class="span8" type="text" placeholder="" minlength="2" required name="supply_shop" value="{{ $data->supply_shop }}"/>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="field-box">
+                        <label>宝贝价格：(元)</label>
+                        <input class="span8" type="text" placeholder="做宝贝价格，例：15.10" pattern="^(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)$" required name="supply_price" value="{{ $data->supply_price }}"/>
                     </div>
                     <br>
 

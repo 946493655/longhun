@@ -64,13 +64,14 @@ class FarmDemandController extends BaseController
 
     public function getData(Request $request)
     {
-        if (!$request->taobao || !$request->zfb) {
+        if (!$request->taobao || !$request->zfb || !$request->tb_level) {
             echo "<script>alert('IS信息必填！');history.go(-1);</script>";exit;
         }
         $uid = Session::has('user') ? Session::get('user.uid') : 0;
         return array(
             'uid'=> $uid,
             'taobao'=> $request->taobao,
+            'tb_level'=> $request->tb_level,
             'zfb'=> $request->zfb,
         );
     }

@@ -17,14 +17,13 @@
 
                     <div class="field-box">
                         <label>IS账号:</label>
-                        <input class="span8" type="text" placeholder="" pattern="^\d+$" minlength="2" required name="is_account" value="{{ $data->is_account }}"/>
+                        <input class="span8" type="text" placeholder="" name="is_account" value="{{ $data->is_account }}"/>
                     </div>
                     <br>
 
                     <div class="field-box">
                         <label>IS昵称:</label>
                         <input class="span8" type="text" placeholder="" minlength="2" required name="is_name" value="{{ $data->is_name }}"/>
-                        <p>提示：自动加上前后缀，例：莉莉 ==> 丿龍魂丶莉莉『２H㊣主持』</p>
                     </div>
                     <br>
 

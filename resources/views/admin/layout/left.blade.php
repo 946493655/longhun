@@ -51,18 +51,18 @@
             </a>
             <ul id="demo1" class="collapse">
                 <li>
-                    <a href="/lhadmin/admin"><i class="fa fa-fw fa-table"></i> 管理列表</a>
+                    <a href="{{DOMAIN}}lhadmin/admin"><i class="fa fa-fw fa-table"></i> 管理列表</a>
                 </li>
                 <li>
-                    <a href="/lhadmin/admin/setting"><i class="fa fa-fw fa-edit"></i> 你的资料</a>
+                    <a href="{{DOMAIN}}lhadmin/admin/setting"><i class="fa fa-fw fa-edit"></i> 你的资料</a>
                 </li>
                 <li>
-                    <a href="/lhadmin/admin/pwd"><i class="fa fa-fw fa-edit"></i> 你的密码</a>
+                    <a href="{{DOMAIN}}lhadmin/admin/pwd"><i class="fa fa-fw fa-edit"></i> 你的密码</a>
                 </li>
             </ul>
         </li>
         <li>
-            {{--<a href="/lhadmin/user"><i class="fa fa-fw fa-table"></i> 会员</a>--}}
+            {{--<a href="{{DOMAIN}}lhadmin/user"><i class="fa fa-fw fa-table"></i> 会员</a>--}}
             <a href="javascript:;" data-toggle="collapse" data-target="#demo2">
                 <i class="fa fa-fw fa-arrows-v"></i> 会员
                 <i class="fa fa-fw fa-caret-down"></i>
@@ -77,7 +77,7 @@
             </ul>
         </li>
         <li>
-            {{--<a href="/lhadmin/user"><i class="fa fa-fw fa-table"></i> 会员</a>--}}
+            {{--<a href="{{DOMAIN}}lhadmin/user"><i class="fa fa-fw fa-table"></i> 会员</a>--}}
             <a href="javascript:;" data-toggle="collapse" data-target="#demo3">
                 <i class="fa fa-fw fa-arrows-v"></i> 日志管理
                 <i class="fa fa-fw fa-caret-down"></i>
@@ -90,6 +90,9 @@
                     <a href="{{DOMAIN}}lhadmin/userlog"><i class="fa fa-fw fa-wrench"></i> 会员日志</a>
                 </li>
             </ul>
+        </li>
+        <li>
+            <a href="{{DOMAIN}}lhadmin/farm"><i class="fa fa-fw fa-table"></i> 自定义单子</a>
         </li>
     </ul>
 </div>

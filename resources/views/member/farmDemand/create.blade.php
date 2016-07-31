@@ -9,8 +9,20 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <div class="field-box">
-                        <label>拍单旺旺:</label>
+                        <label>店铺名称或拍单旺旺:</label>
                         <input class="span8" type="text" placeholder="" minlength="2" required name="taobao"/>
+                    </div>
+                    <br>
+
+                    <div class="field-box">
+                        <label>等级：</label>
+                        <div class="ui-select">
+                            <select name="tb_level" required>
+                                @foreach($model['levels'] as $klevel=>$vlevel)
+                                    <option value="{{ $klevel }}"/>{{ $vlevel }}
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                     <br>
 

@@ -11,10 +11,6 @@
                             <td>{{ $data->genreName() }}</td>
                         </tr>
                         <tr>
-                            <td><label>等级：</label></td>
-                            <td>{{ $data->levelName() }}</td>
-                        </tr>
-                        <tr>
                             <td><label>价格: </label></td>
                             <td>{{ $data->money() }}</td>
                         </tr>

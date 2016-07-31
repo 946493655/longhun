@@ -18,6 +18,8 @@ class BaseController extends Controller
         'admin'=> '管理员',
         'user'=> '会员',
         'identity'=> '会员身份',
+        'adminlog'=> '管理员日志',
+        'userlog'=> '会员日志',
     ];
 
     public function __construct()

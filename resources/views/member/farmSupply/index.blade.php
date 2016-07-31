@@ -46,7 +46,7 @@
                                 <label><input type="checkbox"/> {{ $data->id }}</label>
                             </td>
                             <td>{{ $data->is_number }}</td>
-                            <td class="description">{{ $data->is_account }}</td>
+                            <td class="description">{{ $data->account() }}</td>
                             <td class="description">{{ $data->getName() }}</td>
                             <td class="description">{{ $data->qq() }}</td>
                             <td class="description">{{ $data->qqName() }}</td>

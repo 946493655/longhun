@@ -13,6 +13,7 @@ class FarmController extends BaseController
     {
         $result = [
             'datas'=> $this->query(),
+            'prefix_url'=> DOMAIN.'lhadmin/farm',
         ];
         return view('admin.farm.index', $result);
     }
@@ -25,6 +26,8 @@ class FarmController extends BaseController
 
     public function query()
     {
-        return FarmModel::paginate($this->limit);
+        $datas = FarmModel::paginate($this->limit);
+        $datas->limit = $this->limit;
+        return $datas;
     }
 }

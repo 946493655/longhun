@@ -64,14 +64,19 @@ class FarmSupplyController extends BaseController
 
     public function getData(Request $request)
     {
-        if (!$request->is_number || !$request->is_account || !$request->is_name) {
+        if (!$request->is_number || !$request->is_name) {
             echo "<script>alert('IS信息必填！');history.go(-1);</script>";exit;
+        }
+        //IS昵称同名限制
+        $supply = FarmSupplyModel::where('is_name','like','%'.$request->is_name.'%')->first();
+        if ($supply) {
+            echo "<script>alert('IS昵称已存在！');history.go(-1);</script>";exit;
         }
         $uid = Session::has('user') ? Session::get('user.uid') : 0;
         return array(
             'uid'=> $uid,
             'is_number'=> $request->is_number,
-            'is_account'=> $request->is_account,
+            'is_account'=> $request->is_account ? $request->is_account : 0,
             'is_name'=> $request->is_name,
             'genre'=> 1,        //1代表主持
             'qq'=> $request->qq,

@@ -21,6 +21,9 @@
                                 <span class="line"></span>淘宝账号
                             </th>
                             <th class="span3">
+                                <span class="line"></span>淘宝等级
+                            </th>
+                            <th class="span3">
                                 <span class="line"></span>支付宝账号
                             </th>
                             <th class="span3">
@@ -37,6 +40,7 @@
                                 <label><input type="checkbox"/> {{ $data->id }}</label>
                             </td>
                             <td class="description">{{ $data->taobao }}</td>
+                            <td class="description">{{ $data->levelName() }}</td>
                             <td class="description">{{ $data->zfb }}</td>
                             <td class="description">{{ $data->createTime() }}</td>
                             <td>

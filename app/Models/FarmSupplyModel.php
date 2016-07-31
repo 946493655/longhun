@@ -24,7 +24,7 @@ class FarmSupplyModel extends BaseModel
 
     public function getName()
     {
-        return $this->is_name ? '丿龍魂丶'.$this->is_name.'主持' : '';
+        return $this->is_name ? $this->is_name : '';
     }
 
     public function qq()
@@ -35,5 +35,10 @@ class FarmSupplyModel extends BaseModel
     public function qqName()
     {
         return $this->qq_name ? $this->qq_name : '未填写';
+    }
+
+    public function account()
+    {
+        return $this->is_account ? $this->is_account : $this->is_number;
     }
 }

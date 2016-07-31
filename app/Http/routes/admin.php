@@ -34,6 +34,9 @@ Route::group(['prefix'=>'lhadmin','middleware'=>'AdminAuth','namespace'=>'Admin'
     //用户日志
     Route::resource('adminlog','AdminLogController');
     Route::resource('userlog','UserLogController');
+    //马甲格式
+    Route::post('farmvest/{id}','FarmVestController@update');
+    Route::resource('farmvest','FarmVestController');
     //自定义单子
     Route::resource('farm','FarmController');
 });

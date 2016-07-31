@@ -14,7 +14,7 @@
         .right { color:rgba(100,100,100,1);font-size:30px;/*float:right;*/ }
         .td_r { width:250px;/*border-bottom:1px dotted lightgrey;*/ }
         input { padding:5px 10px;width:300px;font-size:25px;font-family:"黑体";border:0;border-bottom:1px solid rgba(220,220,220,1); }
-        .small { color:red;font-size:16px;text-align:center; }
+        .small { margin-top:-50px;color:red;font-size:16px;text-align:center; }
         .submit,.ceshi { margin:50px auto;text-align:center; }
         .submit button,.ceshi button { padding:10px 50px;font-size:20px;font-family:"黑体";color:white;border:1px solid rgba(14,144,210,1);background:rgba(14,144,210,1);cursor:pointer; }
         .submit button:hover,.ceshi button:hover { border:1px solid rgba(12,121,177,1);background:rgba(12,121,177,1); }
@@ -55,6 +55,7 @@
 </form>
 <div style="height:50px;">{{--空白--}}</div>
 <p class="ceshi">
+    <button onclick="window.location.href='{{$domain}}lhadmin';">管理后台进入</button><br><br>
     <button id="btn">重复昵称测试</button><br>
     <input type="text" name="name2" placeholder="输入测试昵称" class="name2">
     <div class="small" id="name2Msg" style="display:none;">&nbsp;</div>

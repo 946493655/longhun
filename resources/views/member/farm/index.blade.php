@@ -60,9 +60,12 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th style="width:50px;">ID</th>
+                            <th style="width:100px;">ID</th>
                             <th class="span3">
                                 <span class="line"></span>类型
+                            </th>
+                            <th class="span3">
+                                <span class="line"></span>主持
                             </th>
                             <th class="span3">
                                 <span class="line"></span>价格
@@ -89,6 +92,7 @@
                             <td>
                                 <a href="{{DOMAIN}}member/farm/{{ $data->id }}" class="name">{{ $data->genreName() }}</a>
                             </td>
+                            <td class="description">{{ $data->supplyIsName() }}</td>
                             <td class="description">{{ $data->money() }}</td>
                             <td class="description">{{ str_limit($data->intro,20) }}</td>
                             <td class="description">{{ $data->statusName() }}</td>
@@ -96,8 +100,9 @@
                             <td>
                                 <a href="{{DOMAIN}}member/farm/{{ $data->id }}" class="btn btn-default">查看</a>
                                 <a href="{{DOMAIN}}member/farm/status/{{ $data->id }}" class="btn btn-default">走流程</a>
-                                @if($data->status<2)
+                                @if($data->status<3)
                                 <a href="{{DOMAIN}}member/farm/{{ $data->id }}/edit" class="btn btn-default">修改</a>
+                                @elseif($data->status<2)
                                 <a href="{{DOMAIN}}member/farm/{{ $data->id }}/destroy" class="btn btn-default">删除</a>
                                 @endif
                             </td>
@@ -119,7 +124,7 @@
                         </tbody>
                     </table>
                 </div>
-                <p>注意：只有未下单的状态，可以修改、删除</p>
+                <p>注意：只有主持付款前可以修改，下单前可以删除</p>
             </div>
         </div>
     </div>

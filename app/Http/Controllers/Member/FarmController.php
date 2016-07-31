@@ -106,8 +106,8 @@ class FarmController extends BaseController
 
     public function getData(Request $request)
     {
-        if (!$request->genre || !$request->level) {
-            echo "<script>alert('单子类型、等级必选！');history.go(-1);</script>";exit;
+        if (!$request->genre) {
+            echo "<script>alert('单子类型必选！');history.go(-1);</script>";exit;
         }
         if (!$request->money) {
             echo "<script>alert('价格必填！');history.go(-1);</script>";exit;
@@ -124,11 +124,13 @@ class FarmController extends BaseController
         return array(
             'genre'=> $request->genre,
             'uid'=> $this->uid,
-            'level'=> $request->level,
             'money'=> $request->money,
             'intro'=> $request->intro,
             'demand_id'=> $request->demand_id,
             'supply_id'=> $request->supply_id,
+            'supply_shop'=> $request->supply_shop,
+            'supply_price'=> $request->supply_price,
+            'status'=> 2,
         );
     }
 
