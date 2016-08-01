@@ -5,23 +5,27 @@
             <h2>会员{{ $data->username }}详情</h2>
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table_center">
-                    <thead>
-                    <tr>
-                        <th>昵称</th>
-                        <th>真实姓名</th>
-                        <th>身份数量</th>
-                        <th>密码更新</th>
-                        <th>添加时间</th>
-                    </tr>
-                    </thead>
                     <tbody>
-                        <tr>
-                            <td>{{ $data->username }}</td>
-                            <td>{{ $data->realname }}</td>
-                            <td>{{ count($data->getUserIdentity()) }}</td>
-                            <td>{{ $data->ispwd() }}</td>
-                            <td>{{ $data->createTime() }}</td>
-                        </tr>
+                    <tr>
+                        <td>昵称</td>
+                        <td>{{ $data->username }}</td>
+                    </tr>
+                    <tr>
+                        <td>真实姓名</td>
+                        <td>{{ $data->realname }}</td>
+                    </tr>
+                    <tr>
+                        <td>身份数量</td>
+                        <td>{{ count($data->getUserIdentity()) }}</td>
+                    </tr>
+                    <tr>
+                        <td>密码更新</td>
+                        <td>{{ $data->ispwd() }}</td>
+                    </tr>
+                    <tr>
+                        <td>添加时间</td>
+                        <td>{{ $data->createTime() }}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

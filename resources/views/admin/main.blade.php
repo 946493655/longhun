@@ -26,7 +26,7 @@
     <script src="{{PUB}}js/jquery.min.js"></script>
 </head>
 <body>
-<div id="wrapper">
+<div id="wrapper" style="height:1200px;overflow:auto;">
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         @include('admin.layout.header')
@@ -34,7 +34,7 @@
     </nav>
 
     <div id="page-wrapper">
-        <div class="container-fluid" style="height:800px;overflow:auto;">
+        <div class="container-fluid" style="height:1150px;overflow:auto;">
             @include('admin.layout.crumb')
             @yield('content')
         </div>

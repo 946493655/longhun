@@ -1,31 +1,6 @@
 @extends('admin.main')
 @section('content')
-    {{--4个图标--}}
     <div class="row">
-        {{--信息--}}
-        {{--<div class="col-lg-3 col-md-6">--}}
-            {{--<div class="panel panel-primary">--}}
-                {{--<div class="panel-heading">--}}
-                    {{--<div class="row">--}}
-                        {{--<div class="col-xs-3">--}}
-                            {{--<i class="fa fa-comments fa-5x"></i>--}}
-                        {{--</div>--}}
-                        {{--<div class="col-xs-9 text-right">--}}
-                            {{--<div class="huge">26</div>--}}
-                            {{--<div>New Comments!</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<a href="#">--}}
-                    {{--<div class="panel-footer">--}}
-                        {{--<span class="pull-left">View Details</span>--}}
-                        {{--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>--}}
-                        {{--<div class="clearfix"></div>--}}
-                    {{--</div>--}}
-                {{--</a>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--任务--}}
         <div class="col-lg-3 col-md-6">
             <div class="panel panel-green">
                 <div class="panel-heading">
@@ -34,21 +9,20 @@
                             <i class="fa fa-tasks fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">12</div>
-                            <div>任务{{--New Tasks!--}}</div>
+                            <div class="huge">{{ count($users) }}</div>
+                            <div>会员</div>
                         </div>
                     </div>
                 </div>
                 <a href="#">
-                    <div class="panel-footer">
-                        <span class="pull-left">详情{{--View Details--}}</span>
+                    <div class="panel-footer" onclick="window.location.href='{{DOMAIN}}lhadmin/user';">
+                        <span class="pull-left">详情</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
                 </a>
             </div>
         </div>
-        {{--订单--}}
         <div class="col-lg-3 col-md-6">
             <div class="panel panel-yellow">
                 <div class="panel-heading">
@@ -57,13 +31,13 @@
                             <i class="fa fa-shopping-cart fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">124</div>
-                            <div>订单{{--New Orders!--}}</div>
+                            <div class="huge">{{ count($farms) }}</div>
+                            <div>自定义单子</div>
                         </div>
                     </div>
                 </div>
                 <a href="#">
-                    <div class="panel-footer">
+                    <div class="panel-footer" onclick="window.location.href='{{DOMAIN}}lhadmin/farm';">
                         <span class="pull-left">详情 </span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
@@ -71,114 +45,121 @@
                 </a>
             </div>
         </div>
-        {{--卡劵--}}
-        <div class="col-lg-3 col-md-6">
-            <div class="panel panel-red">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-support fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">13</div>
-                            <div>卡劵</div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#">
-                    <div class="panel-footer">
-                        <span class="pull-left">详情 </span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
+        {{--<div class="col-lg-3 col-md-6">--}}
+            {{--<div class="panel panel-red">--}}
+                {{--<div class="panel-heading">--}}
+                    {{--<div class="row">--}}
+                        {{--<div class="col-xs-3">--}}
+                            {{--<i class="fa fa-support fa-5x"></i>--}}
+                        {{--</div>--}}
+                        {{--<div class="col-xs-9 text-right">--}}
+                            {{--<div class="huge">13</div>--}}
+                            {{--<div>卡劵</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<a href="#">--}}
+                    {{--<div class="panel-footer">--}}
+                        {{--<span class="pull-left">详情 </span>--}}
+                        {{--<span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>--}}
+                        {{--<div class="clearfix"></div>--}}
+                    {{--</div>--}}
+                {{--</a>--}}
+            {{--</div>--}}
+        {{--</div>--}}
         @include('admin.layout.info')
     </div>
 
-    {{--图表--}}
-    {{--<div class="row">--}}
-        {{--<div class="col-lg-12">--}}
-            {{--<div class="panel panel-default">--}}
-                {{--<div class="panel-heading">--}}
-                    {{--<h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>图表 </h3>--}}
-                {{--</div>--}}
-                {{--<div class="panel-body">--}}
-                    {{--<div id="morris-area-chart"></div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-
     <div class="row">
-        {{--环图标--}}
-        {{--<div class="col-lg-4">--}}
-            {{--<div class="panel panel-default">--}}
-                {{--<div class="panel-heading">--}}
-                    {{--<h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i>统计 </h3>--}}
-                {{--</div>--}}
-                {{--<div class="panel-body">--}}
-                    {{--<div id="morris-donut-chart"></div>--}}
-                    {{--<div class="text-right">--}}
-                        {{--<a href="#">详情 <i class="fa fa-arrow-circle-right"></i></a>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-
-        {{--任务--}}
         <div class="col-lg-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>任务 </h3>
+                    <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>用户日志 </h3>
                 </div>
                 <div class="panel-body">
                     <div class="list-group">
                         <a href="#" class="list-group-item">
-                            <span class="badge">just now</span>
-                            <i class="fa fa-fw fa-calendar"></i> Calendar updated
+                            <span class="badge">一日内</span>
+                            <i class="fa fa-fw fa-calendar"></i> 活跃会员
                         </a>
                     </div>
                     <div class="text-right">
-                        <a href="#">所有活动 <i class="fa fa-arrow-circle-right"></i></a>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped" style="text-align:center;">
+                                <thead>
+                                <tr>
+                                    <th>昵称</th>
+                                    <th>登录时间</th>
+                                    <th>退出时间</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @if(count($userlogs))
+                                    @foreach($userlogs as $userlog)
+                                <tr>
+                                    <td>{{ $userlog->userName() }}</td>
+                                    <td>{{ $userlog->loginTime() }}</td>
+                                    <td>{{ $userlog->logoutTime() }}</td>
+                                </tr>
+                                    @endforeach
+                                @else
+                                    <tr><td colspan="5" style="text-align:center;">没有记录</td></tr>
+                                @endif
+                                </tbody>
+                            </table>
+                        </div>
+                        <a href="{{DOMAIN}}lhadmin/userlog">所有活动 <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
 
-        {{--交易量--}}
         <div class="col-lg-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> 交易 {{--Transactions Panel--}}</h3>
+                    <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> 交易 </h3>
                 </div>
                 <div class="panel-body">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item">
+                            <span class="badge">最新记录</span>
+                            <i class="fa fa-fw fa-calendar"></i> 最新5条
+                        </a>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover table-striped">
                             <thead>
                             <tr>
-                                <th>Order #</th>
-                                <th>Order Date</th>
-                                <th>Order Time</th>
-                                <th>Amount (USD)</th>
+                                <th>类型</th>
+                                <th>发布人</th>
+                                <th>主持</th>
+                                <th>佣金</th>
+                                <th>状态</th>
                             </tr>
                             </thead>
                             <tbody>
+                            @if(count($farms))
+                                @foreach($farms as $farm)
                             <tr>
-                                <td>3326</td>
-                                <td>10/21/2013</td>
-                                <td>3:29 PM</td>
-                                <td>$321.33</td>
+                                <td>{{ $farm->genreName() }}</td>
+                                <td>{{ $farm->getUserName() }}</td>
+                                <td>{{ $farm->supplyIsNameNoVest() }}</td>
+                                <td>{{ $farm->money() }}</td>
+                                <td>{{ $farm->statusName() }}</td>
                             </tr>
+                                @endforeach
+                            @else
+                                <tr><td colspan="5" style="text-align:center;">没有记录</td></tr>
+                            @endif
                             </tbody>
                         </table>
                     </div>
                     <div class="text-right">
-                        <a href="#">所有交易 <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{DOMAIN}}lhadmin/farm">所有交易 <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
+        {{--@include('admin.layout.info')--}}
     </div>
 @stop

@@ -10,7 +10,7 @@ class FarmSupplyModel extends BaseModel
     protected $table = 'farms_supply';
 
     protected $fillable = [
-        'id','uid','genre','is_number','is_account','is_name','qq','qq_name','created_at','updated_at',
+        'id','uid','genre','is_number','is_account','is_name','vest_id','qq','qq_name','created_at','updated_at',
     ];
 
     protected $genres = [
@@ -24,7 +24,8 @@ class FarmSupplyModel extends BaseModel
 
     public function getName()
     {
-        return $this->is_name ? $this->is_name : '';
+//        return $this->is_name ? $this->is_name : '';
+        return $this->vest() ? $this->vest()->prefix.$this->is_name.'『'.$this->vest()->tuan.$this->vest()->suffix.'』'.$this->vest()->remark : '';
     }
 
     public function qq()
@@ -41,4 +42,16 @@ class FarmSupplyModel extends BaseModel
     {
         return $this->is_account ? $this->is_account : $this->is_number;
     }
+
+    public function vest()
+    {
+        $vestid = $this->vest_id ? $this->vest_id : 0;
+        $vestModel = FarmVestModel::find($vestid);
+        return $vestModel ? $vestModel : '';
+    }
+
+//    public function vestName()
+//    {
+//        return $this->vest() ? $this->vest()->prefix.'XXX『'.$this->vest()->tuan.$this->vest()->suffix.'』'.$this->vest()->remark : '';
+//    }
 }

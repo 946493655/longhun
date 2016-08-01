@@ -24,12 +24,19 @@ class HomeController extends BaseController
      */
     public function farms()
     {
-        $datas = FarmModel::where('uid',$this->uid)->get();
+        $datas = FarmModel::where('uid',$this->uid)
+            ->where('created_at','>',time()-3600*24)
+            ->paginate($this->limit/2);
+        $allFarms = FarmModel::where('uid',$this->uid)
+                                ->where('genre',1)
+                                ->get();
         $successFarms = FarmModel::where('uid',$this->uid)
                                 ->where('genre',1)
-                                ->where('created_at','>',time()-3600*24)
-                                ->where('id','desc')
+                                ->where('status',8)
+//                                ->where('created_at','>',time()-3600*24)
+//                                ->orderBy('id','desc')
                                 ->get();
+        $datas->allFarms = count($allFarms);
         $datas->successFarms = count($successFarms);
         return $datas;
     }

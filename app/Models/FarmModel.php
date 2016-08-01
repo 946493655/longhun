@@ -59,6 +59,16 @@ class FarmModel extends BaseModel
         return $this->money ? $this->money.'元' : '';
     }
 
+    public function price()
+    {
+        return $this->supply_price ? $this->supply_price.'元' : '';
+    }
+
+    public function remarks()
+    {
+        return $this->remarks ? $this->remarks : '未填写';
+    }
+
     /**
      * 该会员所有主持
      */
@@ -79,9 +89,17 @@ class FarmModel extends BaseModel
     }
 
     /**
-     * 主持的IS昵称
+     * 主持的IS昵称（有马甲）
      */
     public function supplyIsName()
+    {
+        return $this->supply() ? $this->supply()->getName() : '';
+    }
+
+    /**
+     * 主持IS昵称（无马甲）
+     */
+    public function supplyIsNameNoVest()
     {
         return $this->supply() ? $this->supply()->is_name : '';
     }

@@ -10,15 +10,14 @@ class FarmVestModel extends BaseModel
     protected $table = 'farms_vest';
 
     protected $fillable = [
-        'id','genre','name','created_at','updated_at',
+        'id','prefix','tuan','suffix','remark','created_at','updated_at',
     ];
 
-    protected $genres = [
-        1=>'前缀','团名称','后缀'
-    ];
-
-    public function genreName()
+    /**
+     * 马甲格式
+     */
+    public function vest()
     {
-        return array_key_exists($this->genre,$this->genres) ? $this->genres[$this->gene] : '';
+        return $this->prefix.'XXX『'.$this->tuan.$this->suffix.'』'.$this->remark;
     }
 }

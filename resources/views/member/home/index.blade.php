@@ -33,12 +33,18 @@
                         @include('member.home.ring')
 
                         {{--以下是列表--}}
-                        <h6>今日单子 Today Order</h6>
+                        <h6>一日内单子 Today Ago</h6>
                         <br />
                         <table class="table table-hover">
                             <thead>
                             <tr>
                                 <th class="span2"> 类型 </th>
+                                <th class="span3">
+                                    <span class="line"></span> 发布人
+                                </th>
+                                <th class="span3">
+                                    <span class="line"></span> 主持
+                                </th>
                                 <th class="span3">
                                     <span class="line"></span> 佣金
                                 </th>
@@ -48,6 +54,7 @@
                                 <th class="span3">
                                     <span class="line"></span> 创建时间
                                 </th>
+                                <th class="span2"> 操作 </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -55,9 +62,12 @@
                                 @foreach($farms as $farm)
                             <tr class="first">
                                 <td>{{ $farm->genreName() }}</td>
+                                <td>{{ $farm->getUserName() }}</td>
+                                <td>{{ $farm->supplyIsName/*NoVest*/() }}</td>
                                 <td>{{ $farm->money() }}</td>
                                 <td>{{ $farm->statusName() }}</td>
                                 <td>{{ $farm->createTime() }}</td>
+                                <td><a href="{{DOMAIN}}lhadmin/farm/{{ $farm->id }}" class="btn btn-default">详情</a></td>
                             </tr>
                                 @endforeach
                             @else <tr><td colspan="4" style="text-align:center;">没有记录</td></tr>

@@ -69,7 +69,7 @@
             </a>
             <ul id="demo2" class="collapse">
                 <li>
-                    <a href="{{DOMAIN}}lhadmin/user"><i class="fa fa-fw fa-table"></i> 管理列表</a>
+                    <a href="{{DOMAIN}}lhadmin/user"><i class="fa fa-fw fa-table"></i> 会员列表</a>
                 </li>
                 <li>
                     <a href="{{DOMAIN}}lhadmin/identity"><i class="fa fa-fw fa-edit"></i> 身份查询</a>
@@ -90,6 +90,9 @@
                     <a href="{{DOMAIN}}lhadmin/userlog"><i class="fa fa-fw fa-wrench"></i> 会员日志</a>
                 </li>
             </ul>
+        </li>
+        <li>
+            <a href="{{DOMAIN}}lhadmin/farmvest"><i class="fa fa-fw fa-dashboard"></i> 马甲格式</a>
         </li>
         <li>
             <a href="{{DOMAIN}}lhadmin/farm"><i class="fa fa-fw fa-table"></i> 自定义单子</a>

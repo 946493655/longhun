@@ -48,7 +48,7 @@
         {{--</div>--}}
         <div class="span3 stat">
             <div class="data">
-                <span class="number">{{ count($farms) }}</span> 单子
+                <span class="number">{{ $farms->allFarms }}</span> 单子
             </div>
             <span class="date">ORDER</span>
         </div>

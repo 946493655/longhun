@@ -50,7 +50,7 @@ class FarmController extends BaseController
 
     public function edit($id)
     {
-        $this->tolimit($id);
+//        $this->tolimit($id);
         $result = [
             'data'=> FarmModel::find($id),
             'supplys'=> $this->model->supplys($this->uid),

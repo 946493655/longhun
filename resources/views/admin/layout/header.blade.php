@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html">龙魂-管理 </a>
+    <a class="navbar-brand" href="{{DOMAIN}}lhadmin">龙魂-管理 </a>
 </div>
 <ul class="nav navbar-right top-nav">
     <li class="dropdown">

@@ -38,5 +38,6 @@ Route::group(['prefix'=>'lhadmin','middleware'=>'AdminAuth','namespace'=>'Admin'
     Route::post('farmvest/{id}','FarmVestController@update');
     Route::resource('farmvest','FarmVestController');
     //自定义单子
+    Route::get('farm/index/{uname}','FarmController@index');
     Route::resource('farm','FarmController');
 });
